@@ -1,6 +1,6 @@
-import { View, Text } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import styles from './styles'
-const Inputtext = ( { placeholder, value, onChangeText, secureTextEntry } ) => {
+const Inputtext = ( { placeholder, value, onChangeText, type } ) => {
     return (
         <View>
             <Text style={styles.title}>{placeholder}</Text>
@@ -8,7 +8,8 @@ const Inputtext = ( { placeholder, value, onChangeText, secureTextEntry } ) => {
                 style={styles.input}
                 value={value}
                 onChangeText={onChangeText}
-                secureTextEntry={secureTextEntry}
+                keyboardType={type}
+                
             />
         </View>
     )
