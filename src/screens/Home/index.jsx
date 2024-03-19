@@ -1,12 +1,15 @@
 import { View, Text } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient';
 import Title from '../../components/Title'
 // import styles from './styles'
 export default function Home() {
   return (
-    <View style={styles.container}>
-        <Title title="Home" />
+    <LinearGradient colors={['#000000', '#434343']} style={styles.container}>
+      <View style={styles.containerText}>
+        <Title title="PlanetC" color={"#000"} />
+      </View>
         <Text>Home Screen</Text>
-    </View>
+    </LinearGradient>
   )
 
 }
@@ -15,6 +18,12 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000',
+    
+  },
+  containerText: {
+    position: 'absolute',
+    top: 5,
+    left: 10,
+    padding: 20,
   },
 }

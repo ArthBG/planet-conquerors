@@ -3,6 +3,7 @@ const Title = ({title, color}) => {
   const styles = {
     title: {
       fontSize: 32,
+      fontWeight: 'bold',
       color: color || '#ffff',
     }
   }
