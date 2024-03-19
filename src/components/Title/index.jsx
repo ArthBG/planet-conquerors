@@ -1,11 +1,18 @@
 import { View, Text } from 'react-native'
-import styles from './styles'
-const Title = ({title}) => {
+const Title = ({title, color}) => {
+  const styles = {
+    title: {
+      fontSize: 32,
+      color: color || '#ffff',
+    }
+  }
   return (
     <View>
       <Text style={styles.title}>{title}</Text>
     </View>
+  
   )
+ 
 }
 
 export default Title

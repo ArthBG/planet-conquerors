@@ -15,6 +15,6 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f23f',
+    backgroundColor: '#000',
   },
 }
