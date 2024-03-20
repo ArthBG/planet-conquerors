@@ -1,8 +1,8 @@
-const Planets = 
+const PlanetsData = 
 [
    {name: 'Terra',
     conquestDate: '05/02/0000',
-    image: require('../../assets/images/earth.png'),
+    image: require('../../assets/images/earth.jpg'),
     primaryColor: '#0066F0',
     secondaryColor: '#fff',
     population: '7.8 bilhões',
@@ -18,7 +18,7 @@ const Planets =
 
     {name: 'Marte',
     conquestDate: '10/01/2077',
-    image: require('../../assets/images/mars.png'),
+    image: require('../../assets/images/marte.webp'),
     primaryColor: '#FF0000',
     secondaryColor: '#F05B00',
     population: '1',
@@ -34,7 +34,7 @@ const Planets =
 
     {name: 'Júpiter',
     conquestDate: '25/09/3071',
-    image: require('../../assets/images/jupiter.png'),
+    image: "",
     primaryColor: '#FFD700',
     secondaryColor: '#000',
     population: '0',
@@ -50,7 +50,7 @@ const Planets =
 
     {name: 'Saturno',
     conquestDate: '30/12/3171',
-    image: require('../../assets/images/saturn.png'),
+    image: require('../../assets/images/saturno.webp'),
     primaryColor: '#EB984E',
     secondaryColor: '#000',
     population: '0',
@@ -82,4 +82,4 @@ const Planets =
 ];
 
 
-export default Planets;
+export default PlanetsData;

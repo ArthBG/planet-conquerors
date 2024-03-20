@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 const PlanetItem = ({ planet }) => {
   return (
     <View>
       <Text>{planet.name}</Text>
       <Text>{planet.conquestDate}</Text>
+      <Image source={planet.image} />
       <Text>{planet.primaryColor}</Text>
       <Text>{planet.secondaryColor}</Text>
       <Text>{planet.population}</Text>
