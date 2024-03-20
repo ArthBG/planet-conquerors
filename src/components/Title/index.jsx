@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
-const Title = ({title, color}) => {
+const Title = ({title, color, size}) => {
   const styles = {
     title: {
-      fontSize: 32,
-      fontWeight: 'bold',
+      fontSize: size || 20,
+      fontWeight: 900,
       color: color || '#ffff',
     }
   }
