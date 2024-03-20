@@ -1,4 +1,4 @@
-export class PlanetList {
+export default class PlanetList {
   constructor() {
     this.planets = [];
   }
