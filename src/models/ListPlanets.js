@@ -1,12 +1,10 @@
-import Planets from "../data/Planets";
 export default class PlanetList {
   constructor() {
     this.planets = [];
   }
 
   addPlanet(planet) {
-    let planets1 = Planets;
-    this.planets.push(planets1);
+  
     this.planets.push(planet);
   }
 
