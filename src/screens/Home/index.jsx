@@ -15,7 +15,20 @@ export default function Home() {
         <Title title="PlanetC" color={"#fff"} size={25} />
         <Text style={styles.subtitle}>Aqui estão suas conquistas e descobertas de planetas de todo o universo</Text>
       </View>
-        <Text>Home Screen</Text>
+        <LinearGradient
+    style={styles.containerPlanets}
+    colors={['#00065F', '#1C005B']}
+    start={{ x: 1, y: 0}}
+    end={{ x: 1, y: 1}}>
+
+          <Title title={"Planet1"}  />
+          <Title title={"Planet2"} />
+          <Title title={"Planet3"} />
+          <Title title={"Planet4"} />
+          <Title title={"Planet5"} />
+          <Title title={"Planet6"} />
+
+          </LinearGradient>
         </View>
         </LinearGradient>
   )
@@ -24,19 +37,21 @@ export default function Home() {
 const styles = {
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    
   },
   containerText: {
-    position: 'absolute',
-    top: 30,
-    left: -150,
-    padding: 20,
+    marginTop: 50,
+    marginLeft: 20,
+    marginBottom: 220,
+    width: 250,
+
   },
   subtitle: {
-    color: '#fff',
-    fontSize: 15,
-    width: 300,  
+    color: '#F7F7F7',
+    fontSize: 15,  
+  },
+  containerPlanets: {
+    width: 413,
+    height: 550,
+    borderTopRightRadius: 50,
   }
 }
