@@ -1,40 +1,44 @@
 //Cadastro dos planetas
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import Title from '../../components/Title'
 import Planet from '../../models/Planet';
 import PlanetList from '../../models/ListPlanets';
-import { PlanetsData } from "../../data/Planets"
+import PlanetsData from '../../data/Planets';
+
 
 const planetList = new PlanetList();
- const planetData = PlanetsData.map((planet) => {
-     const planetsmocked = new Planet(
-         planet.name,
-         planet.conquestDate,
-         planet.primaryColor,
-         planet.secondaryColor,
-         planet.population,
-         planet.naturalResources,
-         planet.humanSettlements,
-         planet.galaxy,
-         planet.solarSystem,
-         planet.spaceCoordinates,
-         planet.transmissionFrequency,
-         planet.communicationCode,
-         planet.ruler,
-         planet.title
-     )
-     planetList.addPlanet(planetsmocked);
-     }
- );
+
+PlanetsData.map((planet) => {
+    const planetdata = new Planet(
+        planet.name,
+        planet.conquestDate,
+        planet.primaryColor,
+        planet.secondaryColor,
+        planet.population,
+        planet.naturalResources,
+        planet.humanSettlements,
+        planet.galaxy,
+        planet.solarSystem,
+        planet.spaceCoordinates,
+        planet.transmissionFrequency,
+        planet.communicationCode,
+        planet.ruler,
+        planet.title
+    )
+    planetList.addPlanet(planetdata);
+});
+
+
+
 
 
 
 
 export default function PlanetsC() {
-    const [planetData, setplanetData]
+    
     const [pname, setPname] = useState('');
     const [conquestDate, setConquestdate] = useState('');
     const [primaryColor, setPrimarycolor] = useState('');
@@ -49,7 +53,7 @@ export default function PlanetsC() {
     const [communicationCode, setCommunicationcode] = useState('');
     const [ruler, setRuler] = useState('');
     const [title, setTitle] = useState('');
-    const [planets, setPlanets] = useState(planetList.planets);
+    const [planets, setPlanets] = useState(planetList.getPlanets());
 
     const handleAddPlanet = () => {
         const planet = new Planet(
@@ -72,10 +76,30 @@ export default function PlanetsC() {
         setPlanets(planetList.getPlanets());
     }
 
-    // const handleRemovePlanet = (id) => {
-    //     planetList.removePlanet(id);
-    //     setPlanets(planetList.getPlanets());
-    // }
+     const handleRemovePlanet = (id) => {
+         planetList.removePlanet(id);
+         setPlanets(planetList.getPlanets());
+     }
+
+     const editPlanet = (id) => {
+            const planet = planetList.getPlanetById(id);
+            setPname(planet.name);
+            setConquestdate(planet.conquestDate);
+            setPrimarycolor(planet.primaryColor);
+            setSecondarycolor(planet.secondaryColor);
+            setPopulation(planet.population);
+            setNaturalresources(planet.naturalResources);
+            setHumansettlements(planet.humanSettlements);
+            setGalaxy(planet.galaxy);
+            setSolarsystem(planet.solarSystem);
+            setSpacecoordinates(planet.spaceCoordinates);
+            setTransmissionfrequency(planet.transmissionFrequency);
+            setCommunicationcode(planet.communicationCode);
+            setRuler(planet.ruler);
+            setTitle(planet.title);
+            planetList.removePlanet(id);
+            setPlanets(planetList.getPlanets());
+        }
 
     const styles = {
         input: {
@@ -101,8 +125,36 @@ export default function PlanetsC() {
         },
     }
     return (
-        <LinearGradient colors={['#000', '#628']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <LinearGradient colors={['#fff', '#628']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <ScrollView>
             <Title title="Cadastro de Planetas" />
+            <View>
+                <Text>Planetas Cadastrados</Text>
+                {planets.map((planet, index) => (
+                    <View key={index}>
+                        <Text>{planet.name}</Text>
+                        <Text>{planet.conquestDate}</Text>
+                        <Text>{planet.primaryColor}</Text>
+                        <Text>{planet.secondaryColor}</Text>
+                        <Text>{planet.population}</Text>
+                        <Text>{planet.naturalResources}</Text>
+                        <Text>{planet.humanSettlements}</Text>
+                        <Text>{planet.galaxy}</Text>
+                        <Text>{planet.solarSystem}</Text>
+                        <Text>{planet.spaceCoordinates}</Text>
+                        <Text>{planet.transmissionFrequency}</Text>
+                        <Text>{planet.communicationCode}</Text>
+                        <Text>{planet.ruler}</Text>
+                        <Text>{planet.title}</Text>
+                        <TouchableOpacity onPress={() => handleRemovePlanet(planet.id)}>
+                            <Text>Remover</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => editPlanet(planet.id)}>
+                            <Text>Editar</Text>
+                        </TouchableOpacity>
+                        </View>
+                ))}
+            </View>
             <Text>Nome do Planeta</Text>
             <TextInput
                 style={styles.input}
@@ -190,17 +242,8 @@ export default function PlanetsC() {
             <TouchableOpacity style={styles.button} onPress={handleAddPlanet}>
                 <Text style={styles.buttonText}>Adicionar Planeta</Text>
             </TouchableOpacity>
-            <View>
-                <Text>Planetas Cadastrados</Text>
-                {/* {planets.map((planet) => (
-                    <View key={planet.id}>
-                        <Text>{planet.name}</Text>
-                        <TouchableOpacity onPress={() => handleRemovePlanet(planet.id)}>
-                            <Text>Remover</Text>
-                        </TouchableOpacity>
-                    </View>
-                ))} */}
-            </View>
+           
+            </ScrollView>
         </LinearGradient>
     );
 
