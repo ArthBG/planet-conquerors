@@ -3,6 +3,7 @@ import React from 'react'
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from "@react-navigation/native";
 import Title from '../../components/Title'
 import Planet from '../../models/Planet';
 import PlanetList from '../../models/ListPlanets';
@@ -37,8 +38,8 @@ PlanetsData.map((planet) => {
 
 
 
-export default function PlanetsC() {
-    
+export default function PlanetsC({ route }) {
+    const navigation = useNavigation();
     const [pname, setPname] = useState('');
     const [conquestDate, setConquestdate] = useState('');
     const [primaryColor, setPrimarycolor] = useState('');

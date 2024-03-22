@@ -1,6 +1,8 @@
-import { View, Text } from 'react-native'
+import { Text, TouchableOpacity, View } from "react-native";
+import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Title from '../../components/Title'
+import PlanetList from '../../models/ListPlanets';
 // import styles from './styles'
 export default function Home() {
   return (
@@ -21,12 +23,7 @@ export default function Home() {
     start={{ x: 1, y: 0}}
     end={{ x: 1, y: 1}}>
 
-          <Title title={"Planet1"}  />
-          <Title title={"Planet2"} />
-          <Title title={"Planet3"} />
-          <Title title={"Planet4"} />
-          <Title title={"Planet5"} />
-          <Title title={"Planet6"} />
+          
 
           </LinearGradient>
         </View>

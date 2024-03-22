@@ -1,10 +1,13 @@
-export default class PlanetList {
+import { PlanetsData } from '../data/Planets';
+import Planet from './Planet';
+
+class PlanetList {
   constructor() {
     this.planets = [];
   }
 
   addPlanet(planet) {
-  
+
     this.planets.push(planet);
   }
 
@@ -32,4 +35,25 @@ export default class PlanetList {
             return planets;
         });
     }
-}
+
+  }
+  const planetList = new PlanetList();
+  const newPlanet = new Planet(
+    PlanetsData.name,
+    PlanetsData.conquestDate,
+    PlanetsData.primaryColor,
+    PlanetsData.secondaryColor,
+    PlanetsData.population,
+    PlanetsData.naturalResources,
+    PlanetsData.humanSettlements,
+    PlanetsData.galaxy,
+    PlanetsData.solarSystem,
+    PlanetsData.spaceCoordinates,
+    PlanetsData.transmissionFrequency,
+    PlanetsData.communicationCode,
+    PlanetsData.ruler,
+    PlanetsData.title
+  );
+  planetList.addPlanet(newPlanet);
+
+  export default planetList;
