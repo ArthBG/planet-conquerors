@@ -1,4 +1,4 @@
-const PlanetsData = 
+export const PlanetsData = 
 [
    {name: 'Terra',
     conquestDate: '05/02/0000',
@@ -81,5 +81,3 @@ const PlanetsData =
     title: 'Imperador'}
 ];
 
-
-export default PlanetsData;

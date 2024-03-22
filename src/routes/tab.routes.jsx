@@ -4,18 +4,24 @@ import Home from "../screens/Home";
 import Category from "../screens/Category";
 import Profile from "../screens/Profile";
 import PlanetsC from "../screens/PlanetsC";
+import { PlanetsData } from "../data/Planets";
+import Myself from "../data/Myself";
+import PlanetList from "../models/ListPlanets";
 
+const planets = PlanetList.getPlanets();
 const Tab = createBottomTabNavigator();
 
 const TabRoutes = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Home" component={Home} />
+    <Tab.Navigator screenOptions={{ headerShown: false }}
+    initialRouteName="Home"
+    >
+     <Tab.Screen name="Home" component={Home} initialParams={{ planets }} />
       <Tab.Screen name="Category" component={Category} />
-      <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="PlanetsC" component={PlanetsC} />
+      <Tab.Screen name="Profile" component={Profile}/>
+      <Tab.Screen name="PlanetsC" component={PlanetsC} initialParams={{ PlanetsData: null, edit: false }} />
     </Tab.Navigator>
   );
-};
+}
 
 export default TabRoutes;
