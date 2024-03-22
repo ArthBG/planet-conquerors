@@ -1,36 +1,36 @@
 //Cadastro dos planetas
 import React from 'react'
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from "@react-navigation/native";
 import Title from '../../components/Title'
 import Planet from '../../models/Planet';
 import PlanetList from '../../models/ListPlanets';
-import PlanetsData from '../../data/Planets';
+// import PlanetsData from '../../data/Planets';
 
 
 const planetList = new PlanetList();
 
-PlanetsData.map((planet) => {
-    const planetdata = new Planet(
-        planet.name,
-        planet.conquestDate,
-        planet.primaryColor,
-        planet.secondaryColor,
-        planet.population,
-        planet.naturalResources,
-        planet.humanSettlements,
-        planet.galaxy,
-        planet.solarSystem,
-        planet.spaceCoordinates,
-        planet.transmissionFrequency,
-        planet.communicationCode,
-        planet.ruler,
-        planet.title
-    )
-    planetList.addPlanet(planetdata);
-});
+// PlanetsData.map((planet) => {
+//     const planetdata = new Planet(
+//         planet.name,
+//         planet.conquestDate,
+//         planet.primaryColor,
+//         planet.secondaryColor,
+//         planet.population,
+//         planet.naturalResources,
+//         planet.humanSettlements,
+//         planet.galaxy,
+//         planet.solarSystem,
+//         planet.spaceCoordinates,
+//         planet.transmissionFrequency,
+//         planet.communicationCode,
+//         planet.ruler,
+//         planet.title
+//     )
+//     planetList.addPlanet(planetdata);
+// });
 
 
 
@@ -39,7 +39,10 @@ PlanetsData.map((planet) => {
 
 
 export default function PlanetsC({ route }) {
+    let { planet, edit } = route.params;
+
     const navigation = useNavigation();
+    const [isUpdate, setIsUpdate] = useState(edit);
     const [pname, setPname] = useState('');
     const [conquestDate, setConquestdate] = useState('');
     const [primaryColor, setPrimarycolor] = useState('');
@@ -56,34 +59,8 @@ export default function PlanetsC({ route }) {
     const [title, setTitle] = useState('');
     const [planets, setPlanets] = useState(planetList.getPlanets());
 
-    const handleAddPlanet = () => {
-        const planet = new Planet(
-            pname,
-            conquestDate,
-            primaryColor,
-            secondaryColor,
-            population,
-            naturalResources,
-            humanSettlements,
-            galaxy,
-            solarSystem,
-            spaceCoordinates,
-            transmissionFrequency,
-            communicationCode,
-            ruler,
-            title
-        );
-        planetList.addPlanet(planet);
-        setPlanets(planetList.getPlanets());
-    }
-
-     const handleRemovePlanet = (id) => {
-         planetList.removePlanet(id);
-         setPlanets(planetList.getPlanets());
-     }
-
-     const editPlanet = (id) => {
-            const planet = planetList.getPlanetById(id);
+    useEffect(() => {
+        if (edit) {
             setPname(planet.name);
             setConquestdate(planet.conquestDate);
             setPrimarycolor(planet.primaryColor);
@@ -98,9 +75,73 @@ export default function PlanetsC({ route }) {
             setCommunicationcode(planet.communicationCode);
             setRuler(planet.ruler);
             setTitle(planet.title);
-            planetList.removePlanet(id);
-            setPlanets(planetList.getPlanets());
+            setIsUpdate(true);
+        } else {
+            clearFields();
         }
+    }, [planets, edit]);
+
+    const clearFields = () => {
+        setIsUpdate(false);
+        edit = false;
+        setPname('');
+        setConquestdate('');
+        setPrimarycolor('');
+        setSecondarycolor('');
+        setPopulation('');
+        setNaturalresources('');
+        setHumansettlements('');
+        setGalaxy('');
+        setSolarsystem('');
+        setSpacecoordinates('');
+        setTransmissionfrequency('');
+        setCommunicationcode('');
+        setRuler('');
+        setTitle('');
+    }
+
+    const handleAddPlanet = () => {
+        if (isUpdate) {
+            const newPlanet = new Planet(
+                pname,
+                conquestDate,
+                primaryColor,
+                secondaryColor,
+                population,
+                naturalResources,
+                humanSettlements,
+                galaxy,
+                solarSystem,
+                spaceCoordinates,
+                transmissionFrequency,
+                communicationCode,
+                ruler,
+                title
+            );
+            planetList.updatePlanet(newPlanet);
+        } else {
+            const newPlanet = new Planet(
+                pname,
+                conquestDate,
+                primaryColor,
+                secondaryColor,
+                population,
+                naturalResources,
+                humanSettlements,
+                galaxy,
+                solarSystem,
+                spaceCoordinates,
+                transmissionFrequency,
+                communicationCode,
+                ruler,
+                title
+            );
+            planetList.addPlanet(newPlanet);
+        }
+        setPlanets(planetList.getPlanets());
+        navigation.navigate('Home');
+        clearFields();
+    }
 
     const styles = {
         input: {
@@ -131,7 +172,7 @@ export default function PlanetsC({ route }) {
             <Title title="Cadastro de Planetas" />
             <View>
                 <Text>Planetas Cadastrados</Text>
-                {planets.map((planet, index) => (
+                {/* {planets.map((planet, index) => (
                     <View key={index}>
                         <Text>{planet.name}</Text>
                         <Text>{planet.conquestDate}</Text>
@@ -154,7 +195,7 @@ export default function PlanetsC({ route }) {
                             <Text>Editar</Text>
                         </TouchableOpacity>
                         </View>
-                ))}
+                ))} */}
             </View>
             <Text>Nome do Planeta</Text>
             <TextInput
@@ -241,8 +282,14 @@ export default function PlanetsC({ route }) {
                 onChangeText={setTitle}
             />
             <TouchableOpacity style={styles.button} onPress={handleAddPlanet}>
-                <Text style={styles.buttonText}>Adicionar Planeta</Text>
+                <Text style={styles.buttonText}>{isUpdate ? 'Editar' : 'Cadastrar'}
+                </Text>
             </TouchableOpacity>
+            {isUpdate && (
+                <TouchableOpacity style={styles.button} onPress={clearFields}>
+                    <Text style={styles.buttonText}>Cancelar Alterações</Text>
+                </TouchableOpacity>
+            )}
            
             </ScrollView>
         </LinearGradient>
