@@ -1,13 +1,12 @@
 import { PlanetsData } from '../data/Planets';
 import Planet from './Planet';
 
-class PlanetList {
+class PlanetLista {
   constructor() {
     this.planets = [];
   }
 
   addPlanet(planet) {
-
     this.planets.push(planet);
   }
 
@@ -17,6 +16,10 @@ class PlanetList {
 
   getPlanet(name) {
     return this.planets.find((planet) => planet.name === name);
+  }
+
+  getPlanets() {
+    return this.planets;
   }
 
   getPlanetById(id) {
@@ -33,23 +36,23 @@ class PlanetList {
     }
 
   }
-    const planetLista = new PlanetList();
-    const newPlanet = new Planet(
-      PlanetsData.name,
-      PlanetsData.conquestDate,
-      PlanetsData.primaryColor,
-      PlanetsData.secondaryColor,
-      PlanetsData.population,
-      PlanetsData.naturalResources,
-      PlanetsData.humanSettlements,
-      PlanetsData.galaxy,
-      PlanetsData.solarSystem,
-      PlanetsData.spaceCoordinates,
-      PlanetsData.transmissionFrequency,
-      PlanetsData.communicationCode,
-      PlanetsData.ruler,
-      PlanetsData.title
-      );
-      planetLista.addPlanet(newPlanet);
+  const PlanetList = new PlanetLista();
+     const newPlanet = new Planet(
+       PlanetsData.name,
+       PlanetsData.conquestDate,
+       PlanetsData.primaryColor,
+       PlanetsData.secondaryColor,
+       PlanetsData.population,
+       PlanetsData.naturalResources,
+       PlanetsData.humanSettlements,
+       PlanetsData.galaxy,
+       PlanetsData.solarSystem,
+       PlanetsData.spaceCoordinates,
+       PlanetsData.transmissionFrequency,
+       PlanetsData.communicationCode,
+       PlanetsData.ruler,
+       PlanetsData.title
+       );
+       PlanetList.addPlanet(newPlanet);
 
   export default PlanetList;

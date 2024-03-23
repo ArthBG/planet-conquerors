@@ -6,7 +6,6 @@ import Title from '../../components/Title'
 import PlanetList from '../../models/ListPlanets';
 // import styles from './styles'
 
-const planetList = new PlanetList();
 export default function Home() {
   const navigation = useNavigation();
   const isFocused = useIsFocused();
@@ -14,7 +13,7 @@ export default function Home() {
 
    useEffect(() => {
      if (isFocused){
-       setAllPlanets(planetList.planets);
+       setAllPlanets(PlanetList.planets);
      }
    }
    , [isFocused]);

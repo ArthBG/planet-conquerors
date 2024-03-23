@@ -1,5 +1,5 @@
 export default class Planet {
-  constructor(name, conquestDate, image, primaryColor, secondaryColor, population, naturalResources, humanSettlements, galaxy, solarSystem, spaceCoordinates, transmissionFrequency, communicationCode, ruler, title, id) {
+  constructor(name, conquestDate, image, primaryColor, secondaryColor, population, naturalResources, humanSettlements, galaxy, solarSystem, spaceCoordinates, transmissionFrequency, communicationCode, ruler, title) {
     this.name = name;
     this.conquestDate = conquestDate;
     this.image = image;

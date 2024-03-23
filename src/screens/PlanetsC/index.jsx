@@ -7,33 +7,6 @@ import { useNavigation } from "@react-navigation/native";
 import Title from '../../components/Title'
 import Planet from '../../models/Planet';
 import PlanetList from '../../models/ListPlanets';
-// import PlanetsData from '../../data/Planets';
-
-
-const planetList = new PlanetList();
-
-// PlanetsData.map((planet) => {
-//     const planetdata = new Planet(
-//         planet.name,
-//         planet.conquestDate,
-//         planet.primaryColor,
-//         planet.secondaryColor,
-//         planet.population,
-//         planet.naturalResources,
-//         planet.humanSettlements,
-//         planet.galaxy,
-//         planet.solarSystem,
-//         planet.spaceCoordinates,
-//         planet.transmissionFrequency,
-//         planet.communicationCode,
-//         planet.ruler,
-//         planet.title
-//     )
-//     planetList.addPlanet(planetdata);
-// });
-
-
-
 
 
 
@@ -57,7 +30,7 @@ export default function PlanetsC({ route }) {
     const [communicationCode, setCommunicationcode] = useState('');
     const [ruler, setRuler] = useState('');
     const [title, setTitle] = useState('');
-    const [planets, setPlanets] = useState(planetList.planets);
+    const [planets, setPlanets] = useState(PlanetList.planets);
 
     useEffect(() => {
         if (edit) {
