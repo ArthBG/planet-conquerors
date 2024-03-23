@@ -17,18 +17,7 @@ const TabRoutes = () => {
     >
      <Tab.Screen name="Home" component={Home} initialParams={{ planets, PlanetsData }} />
       <Tab.Screen name="Category" component={Category} />
-      <Tab.Screen name="Profile" component={Profile}  /*options={{
-          tabBarIcon: ({ focused }) => (
-            <Feather
-              name="user"
-              size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
-            />
-          ),
-          tabBarLabel: "Perfil",
-          tabBarActiveTintColor: "#131313",
-          tabBarInactiveTintColor: "#D6D6D6",
-        }}*/ />
+      <Tab.Screen name="Profile" component={Profile}  />
       <Tab.Screen name="PlanetsC" component={PlanetsC} initialParams={{ PlanetsData: null, edit: false }} />
     </Tab.Navigator>
   );

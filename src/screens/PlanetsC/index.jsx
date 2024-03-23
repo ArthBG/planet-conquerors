@@ -138,7 +138,7 @@ export default function PlanetsC({ route }) {
             );
             planetList.addPlanet(newPlanet);
         }
-        setPlanets(planetList.getPlanets());
+        setPlanets(planetList.planets);
         navigation.navigate('Home');
         clearFields();
     }
