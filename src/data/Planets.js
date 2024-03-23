@@ -34,7 +34,7 @@ export const PlanetsData =
 
     {name: 'Júpiter',
     conquestDate: '25/09/3071',
-    image: "",
+    image:  require('../../assets/images/jupiter.webp'),
     primaryColor: '#FFD700',
     secondaryColor: '#000',
     population: '0',
@@ -66,7 +66,7 @@ export const PlanetsData =
 
     {name: 'Larypisis Home',
     conquestDate: '01/01/3952',
-    image: "",
+    image:  require('../../assets/images/saturno.webp'),
     primaryColor: '#000',
     secondaryColor: '#628',
     population: '9003',
