@@ -57,7 +57,7 @@ export default function PlanetsC({ route }) {
     const [communicationCode, setCommunicationcode] = useState('');
     const [ruler, setRuler] = useState('');
     const [title, setTitle] = useState('');
-    const [planets, setPlanets] = useState(planetList.getPlanets());
+    const [planets, setPlanets] = useState(planetList.planets);
 
     useEffect(() => {
         if (edit) {

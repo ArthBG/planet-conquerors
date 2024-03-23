@@ -5,18 +5,19 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Title from '../../components/Title'
 import PlanetList from '../../models/ListPlanets';
 // import styles from './styles'
+
+const planetList = new PlanetList();
 export default function Home() {
   const navigation = useNavigation();
   const isFocused = useIsFocused();
   const [allPlanets, setAllPlanets] = useState([]);
 
-  useEffect(() => {
-    if (isFocused){
-      const planetList = new PlanetList();
-      setAllPlanets(planetList.getPlanets());
-    }
-  }
-  , [isFocused]);
+   useEffect(() => {
+     if (isFocused){
+       setAllPlanets(planetList.planets);
+     }
+   }
+   , [isFocused]);
 
   return (
     <LinearGradient
@@ -30,7 +31,7 @@ export default function Home() {
         <Title title="PlanetC" color={"#fff"} size={25} />
         <Text style={styles.subtitle}>Aqui estão suas conquistas e descobertas de planetas de todo o universo</Text>
         <View style={styles.containerPlanets}>
-          {allPlanets.length > 0 ? (
+         {allPlanets.length > 0 ? (
           allPlanets.map((planet) => (
             <TouchableOpacity
               key={planet.id}

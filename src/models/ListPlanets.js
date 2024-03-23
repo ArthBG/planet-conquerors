@@ -23,7 +23,7 @@ class PlanetList {
     return this.planets.find((planet) => planet.name === name);
   }
 
-    getPlanetById(id) {
+  getPlanetById(id) {
         return this.planets.find((planet) => planet.id === id);
     }
 
@@ -37,23 +37,23 @@ class PlanetList {
     }
 
   }
-  const planetList = new PlanetList();
-  const newPlanet = new Planet(
-    PlanetsData.name,
-    PlanetsData.conquestDate,
-    PlanetsData.primaryColor,
-    PlanetsData.secondaryColor,
-    PlanetsData.population,
-    PlanetsData.naturalResources,
-    PlanetsData.humanSettlements,
-    PlanetsData.galaxy,
-    PlanetsData.solarSystem,
-    PlanetsData.spaceCoordinates,
-    PlanetsData.transmissionFrequency,
-    PlanetsData.communicationCode,
-    PlanetsData.ruler,
-    PlanetsData.title
-  );
-  planetList.addPlanet(newPlanet);
+   const planetList = new PlanetList();
+   const newPlanet = new Planet(
+     PlanetsData.name,
+     PlanetsData.conquestDate,
+     PlanetsData.primaryColor,
+     PlanetsData.secondaryColor,
+     PlanetsData.population,
+     PlanetsData.naturalResources,
+     PlanetsData.humanSettlements,
+     PlanetsData.galaxy,
+     PlanetsData.solarSystem,
+     PlanetsData.spaceCoordinates,
+     PlanetsData.transmissionFrequency,
+     PlanetsData.communicationCode,
+     PlanetsData.ruler,
+     PlanetsData.title
+   );
+   planetList.addPlanet(newPlanet);
 
-  export default planetList;
+  export default PlanetList;
