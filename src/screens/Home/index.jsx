@@ -4,6 +4,7 @@ import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Title from '../../components/Title'
 import PlanetList from '../../models/ListPlanets';
+import PlanetMaker from '../../components/PlanetMaker';
 
 // import styles from './styles'
 
@@ -28,13 +29,21 @@ export default function Home() {
       start={{ x: 1, y: 0 }}
       end={{ x: 1, y: 1 }}
     >
-      <View style={styles.container}>
+      <View style={styles.container2}>
         <View style={styles.containerText}>
           <Image source={require('../../../assets/images/imagesda.png')} style={{ width: 180, height: 180 }} />
           <Title title="PlanetC" color={"#fff"} size={25} />
           <Text style={styles.subtitle}>Aqui estão suas conquistas e descobertas de planetas de todo o universo</Text>
         </View>
-        <Image source={require('../../../assets/images/white bg.png')} style={styles.backgroundw} />
+        {/* 
+         */}
+         <View style={styles.backgroundw}>
+          <Text style={styles.subtitle}>Planetas descobertos</Text>
+          <View style={styles.containerPlanet}>
+            <Text style={styles.subtitle}>0</Text>
+            </View>
+          <Title title="Planetas" color={"#fff"} size={25} />
+        </View>
         <LinearGradient
           style={styles.containerPlanets}
           colors={['#fff', '#EEEEEE', '#E3E3E3']}
@@ -48,7 +57,12 @@ export default function Home() {
                   onPress={() => navigation.navigate("PlanetDetails", { data: planet })}
                 >
                   <View style={styles.planet}>
-                    <Image source={planet.image} style={styles.planetImage} />
+                    {planet.image ? (
+                      <Image source={planet.image} style={styles.planetImage} />
+                    ) : (
+                      <PlanetMaker primaryColor={planet.primaryColor} secondaryColor={planet.secondaryColor} />
+                    )
+                    }
                     <Text style={styles.planetName}>{planet.name}</Text>
                   </View>
                 </TouchableOpacity>
@@ -72,6 +86,10 @@ const styles = {
     flex: 1,
     minHeight: '100%',  
   },
+  container2: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
   containerText: {
     alignItems: 'center',
     marginBottom: 170,
@@ -92,7 +110,7 @@ const styles = {
     width: 200,
   },
   containerPlanets: {
-    height: 550,
+    height: 'fit-content',
   },
   containerPlanetsList: {
     marginTop: 20,

@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import Title from '../../components/Title'
 import Planet from '../../models/Planet';
 import PlanetList from '../../models/ListPlanets';
-
+import styles from './styles';
 
 
 
@@ -75,23 +75,8 @@ export default function PlanetsC({ route }) {
 
     const handleAddPlanet = () => {
         if (isUpdate) {
-            const newPlanet = new Planet(
-                pname,
-                conquestDate,
-                primaryColor,
-                secondaryColor,
-                population,
-                naturalResources,
-                humanSettlements,
-                galaxy,
-                solarSystem,
-                spaceCoordinates,
-                transmissionFrequency,
-                communicationCode,
-                ruler,
-                title
-            );
-            planetList.updatePlanet(newPlanet);
+            PlanetList.updatePlanet(planet.id, pname, conquestDate, primaryColor, secondaryColor, population, naturalResources, humanSettlements, galaxy, solarSystem, spaceCoordinates, transmissionFrequency, communicationCode, ruler, title);
+            clearFields();
         } else {
             const newPlanet = new Planet(
                 pname,
@@ -109,67 +94,19 @@ export default function PlanetsC({ route }) {
                 ruler,
                 title
             );
-            planetList.addPlanet(newPlanet);
+            PlanetList.addPlanet(newPlanet);
+
         }
-        setPlanets(planetList.planets);
         navigation.navigate('Home');
         clearFields();
+
     }
 
-    const styles = {
-        input: {
-            backgroundColor: '#fff',
-            width: 300,
-            height: 40,
-            marginBottom: 10,
-            borderRadius: 8,
-            paddingHorizontal: 10,
-        },
-        button: {
-            backgroundColor: '#ff0',
-            width: 300,
-            height: 40,
-            borderRadius: 8,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 10,
-        },
-        buttonText: {
-            color: '#000',
-            fontWeight: 'bold',
-        },
-    }
     return (
         <LinearGradient colors={['#fff', '#628']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <ScrollView>
+                <View style={styles.containerAllS}>
             <Title title="Cadastro de Planetas" />
-            <View>
-                <Text>Planetas Cadastrados</Text>
-                {/* {planets.map((planet, index) => (
-                    <View key={index}>
-                        <Text>{planet.name}</Text>
-                        <Text>{planet.conquestDate}</Text>
-                        <Text>{planet.primaryColor}</Text>
-                        <Text>{planet.secondaryColor}</Text>
-                        <Text>{planet.population}</Text>
-                        <Text>{planet.naturalResources}</Text>
-                        <Text>{planet.humanSettlements}</Text>
-                        <Text>{planet.galaxy}</Text>
-                        <Text>{planet.solarSystem}</Text>
-                        <Text>{planet.spaceCoordinates}</Text>
-                        <Text>{planet.transmissionFrequency}</Text>
-                        <Text>{planet.communicationCode}</Text>
-                        <Text>{planet.ruler}</Text>
-                        <Text>{planet.title}</Text>
-                        <TouchableOpacity onPress={() => handleRemovePlanet(planet.id)}>
-                            <Text>Remover</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => editPlanet(planet.id)}>
-                            <Text>Editar</Text>
-                        </TouchableOpacity>
-                        </View>
-                ))} */}
-            </View>
             <Text>Nome do Planeta</Text>
             <TextInput
                 style={styles.input}
@@ -263,12 +200,11 @@ export default function PlanetsC({ route }) {
                     <Text style={styles.buttonText}>Cancelar Alterações</Text>
                 </TouchableOpacity>
             )}
-           
+        </View>
             </ScrollView>
         </LinearGradient>
     );
 
 }
-
 
 

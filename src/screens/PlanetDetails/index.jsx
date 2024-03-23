@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity,Image } from 'react-native'
 import { useNavigation } from "@react-navigation/native";
 import Title from '../../components/Title'
 import PlanetList from '../../models/ListPlanets'
@@ -12,7 +12,7 @@ export default function Planet({ route }) {
   }
 
   const deletePlanet = () => {
-    PlanetList.deletePlanet(data.id);
+    PlanetList.removePlanet(data.id);
     navigation.navigate('Home');
   }
 
@@ -20,6 +20,10 @@ export default function Planet({ route }) {
     <View style={styles.container}>
       {data ? (
         <View style={styles.container}>
+         {data.image ?
+          <Image source={data.image} style={{ width: 280, height: 280 }} />
+          : null 
+        } 
       <Title title={data.name} color={data.primaryColor} size={25} />
       <Text style={styles.text}>{data.conquestDate}</Text>
       <Text style={styles.text}>{data.primaryColor}</Text>
