@@ -1,7 +1,9 @@
 import "react-native-gesture-handler";
-import { AppRegistry } from "react-native";
+import { registerRootComponent } from "expo";
 import Routes from "./src/routes";
 
-AppRegistry.registerComponent("App", () => Routes); 
+export default function App() {
+    return <Routes />;
+    }
 
-export default AppRegistry;
+registerRootComponent(App);
