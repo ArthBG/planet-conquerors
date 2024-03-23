@@ -16,8 +16,7 @@ const TabRoutes = () => {
     initialRouteName="Home"
     >
      <Tab.Screen name="Home" component={Home} initialParams={{ planets, PlanetsData }} />
-      <Tab.Screen name="Planet" component={Planet} />
-      <Tab.Screen name="Profile" component={Profile}  />
+      <Tab.Screen name="Desenvolvedor" component={Profile}  />
       <Tab.Screen name="PlanetsC" component={PlanetsC} initialParams={{ PlanetsData: null, edit: false }} />
     </Tab.Navigator>
   );

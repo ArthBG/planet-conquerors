@@ -4,6 +4,7 @@ import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Title from '../../components/Title'
 import PlanetList from '../../models/ListPlanets';
+
 // import styles from './styles'
 
 export default function Home() {
@@ -29,9 +30,9 @@ export default function Home() {
     >
       <View style={styles.container}>
         <View style={styles.containerText}>
+          <Image source={require('../../../assets/images/imagesda.png')} style={{ width: 150, height: 150 }} />
           <Title title="PlanetC" color={"#fff"} size={25} />
           <Text style={styles.subtitle}>Aqui estão suas conquistas e descobertas de planetas de todo o universo</Text>
-
         </View>
 
         <LinearGradient
@@ -76,15 +77,17 @@ const styles = {
     height: '100%',
   },
   containerText: {
-    marginTop: 50,
-    marginLeft: 20,
-    marginBottom: 20,
-    width: 250,
+    alignItems: 'center',
+    marginBottom: 220,
+    marginTop: 220,
+    justifyContent: 'center',
 
   },
   subtitle: {
     color: '#F7F7F7',
-    fontSize: 15,
+    marginTop: 20,
+    fontSize: 12,
+    width: 200,
   },
   containerPlanets: {
     width: 355,
@@ -93,11 +96,13 @@ const styles = {
   },
   containerPlanetsList: {
     marginTop: 20,
-    
+    alignItems: 'center',
   },
   planet: {
     backgroundColor: '#000',
     borderRadius: 10,
+    width: 230,
+    height: 170,
     margin: 10,
     padding: 10,
     alignItems: 'center',
@@ -108,7 +113,7 @@ const styles = {
     marginTop: 10,
   },
   planetImage: {
-    width: 100,
+    width: 90,
     height: 100,
     borderRadius: 50,
   },
