@@ -21,7 +21,7 @@ export default function Home() {
     , [isFocused]);
 
   return (
-    <ScrollView style={styles.backgroundScroll}>
+    <ScrollView style={styles.scrollViewContainer}>
     <LinearGradient
       style={styles.container}
       colors={['#000656', '#000546', '#000436', '#000326']}
@@ -30,58 +30,60 @@ export default function Home() {
     >
       <View style={styles.container}>
         <View style={styles.containerText}>
-          <Image source={require('../../../assets/images/imagesda.png')} style={{ width: 150, height: 150 }} />
+          <Image source={require('../../../assets/images/imagesda.png')} style={{ width: 180, height: 180 }} />
           <Title title="PlanetC" color={"#fff"} size={25} />
           <Text style={styles.subtitle}>Aqui estão suas conquistas e descobertas de planetas de todo o universo</Text>
         </View>
-
+        <Image source={require('../../../assets/images/white bg.png')} style={styles.backgroundw} />
         <LinearGradient
           style={styles.containerPlanets}
-          colors={['#00065F', '#1C005B']}
+          colors={['#fff', '#EEEEEE', '#E3E3E3']}
           start={{ x: 1, y: 0 }}
           end={{ x: 1, y: 1 }}>
-          <View>
-            {allPlanets.length > 0 ? (
-              <View style={styles.containerPlanetsList}>
-                {allPlanets.map((planet) => (
-                  <TouchableOpacity
-                    key={planet.id}
-                    onPress={() => navigation.navigate('Planet', { id: planet.id })}
-                  >
-                    <View style={styles.planet}>
-                      <Image source={planet.image} style={styles.planetImage} />
-                      <Text style={styles.planetName}>{planet.name}</Text>
-                    </View>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            ) : (
-              <View>
-                <Text style={styles.subtitle}>Você ainda não descobriu nenhum planeta</Text>
-              </View>
-            )}
-          </View>
-
-
-
+          {allPlanets.length > 0 ? (
+            <View style={styles.containerPlanetsList}>
+              {allPlanets.map((planet) => (
+                <TouchableOpacity
+                  key={planet.id}
+                  onPress={() => navigation.navigate("PlanetDetails", { data: planet })}
+                >
+                  <View style={styles.planet}>
+                    <Image source={planet.image} style={styles.planetImage} />
+                    <Text style={styles.planetName}>{planet.name}</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+          ) : (
+            <View>
+              <Text style={styles.subtitle}>Você ainda não descobriu nenhum planeta</Text>
+            </View>
+          )}
         </LinearGradient>
       </View>
     </LinearGradient>
-      </ScrollView>
+  </ScrollView>
+  
   )
 
 }
 const styles = {
-  backgroundScroll: {
+  scrollViewContainer: {
     flex: 1,
-    height: '100%',
+    minHeight: '100%',  
   },
   containerText: {
     alignItems: 'center',
-    marginBottom: 220,
+    marginBottom: 170,
     marginTop: 220,
     justifyContent: 'center',
 
+  },
+  backgroundw: {
+    width: '100%',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    height: 300,
   },
   subtitle: {
     color: '#F7F7F7',
@@ -90,22 +92,21 @@ const styles = {
     width: 200,
   },
   containerPlanets: {
-    width: 355,
     height: 550,
-    borderTopRightRadius: 50,
   },
   containerPlanetsList: {
     marginTop: 20,
     alignItems: 'center',
   },
   planet: {
-    backgroundColor: '#000',
+    backgroundColor: '#000326',
     borderRadius: 10,
     width: 230,
     height: 170,
     margin: 10,
     padding: 10,
     alignItems: 'center',
+    allignSelf: 'center',
   },
   planetName: {
     color: '#fff',
