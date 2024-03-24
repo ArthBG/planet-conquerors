@@ -9,6 +9,9 @@ import Planet from '../../models/Planet';
 import PlanetList from '../../models/ListPlanets';
 import styles from './styles';
 import RNPickerSelect from 'react-native-picker-select';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { Button } from 'react-native';
+
 
 
 
@@ -16,6 +19,9 @@ export default function PlanetsC({ route }) {
     let { planet, edit } = route.params;
 
     const navigation = useNavigation();
+    const [date, setDate] = useState(new Date(1598051730000));
+    const [mode, setMode] = useState('date')
+    const [show, setShow] = useState(false)
     const [isUpdate, setIsUpdate] = useState(edit);
     const [pname, setPname] = useState('');
     const [conquestDate, setConquestdate] = useState('');
@@ -31,6 +37,23 @@ export default function PlanetsC({ route }) {
     const [communicationCode, setCommunicationcode] = useState('');
     const [ruler, setRuler] = useState('');
     const [title, setTitle] = useState('');
+
+
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate;
+        setShow(false);
+        setDate(currentDate);
+        console.log(currentDate);
+      };
+
+      const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+      };
+    
+      const showDatepicker = () => {
+        showMode('date');
+      };
 
     useEffect(() => {
         if (edit) {
@@ -115,11 +138,20 @@ export default function PlanetsC({ route }) {
                 onChangeText={setPname}
             />
             <Text>Data de Conquista</Text>
-            <TextInput
-                style={styles.input}
-                value={conquestDate}
-                onChangeText={setConquestdate}
-            />
+            <Button onPress={showDatepicker} title="Show date picker!" />
+            <Text>selected: {date.toLocaleString()}</Text>
+      {show && (
+        <DateTimePicker
+            testID="datePicker"
+            dateFormat='DD/MM/YYYY'
+            value={date}
+            mode={mode}
+            display="default"
+            onChange={onChange}
+        />
+
+      )}
+
             <Text>Cor Primária</Text>
             <RNPickerSelect
     style={styles.inputSelect}
@@ -203,6 +235,7 @@ export default function PlanetsC({ route }) {
                 style={styles.input}
                 value={population}
                 onChangeText={setPopulation}
+                keyboardType="numeric"
             />
             <Text>Recursos Naturais</Text>
             <TextInput
@@ -215,6 +248,7 @@ export default function PlanetsC({ route }) {
                 style={styles.input}
                 value={humanSettlements}
                 onChangeText={setHumansettlements}
+                keyboardType="numeric"
             />
             <Text>Galáxia</Text>
             <TextInput

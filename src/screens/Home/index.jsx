@@ -120,7 +120,7 @@ const styles = {
     backgroundColor: '#000538',
     borderRadius: 10,
     width: 230,
-    height: 170,
+    height: 200,
     margin: 10,
     padding: 10,
     alignItems: 'center',
