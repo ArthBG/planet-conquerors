@@ -1,6 +1,7 @@
 //Cadastro dos planetas
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Button } from 'react-native';
+import ValidateText from '../../components/ValidateText';
 import { useState, useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from "@react-navigation/native";
@@ -10,18 +11,16 @@ import PlanetList from '../../models/ListPlanets';
 import styles from './styles';
 import RNPickerSelect from 'react-native-picker-select';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { Button } from 'react-native';
-
-
-
 
 export default function PlanetsC({ route }) {
     let { planet, edit } = route.params;
 
     const navigation = useNavigation();
-    const [date, setDate] = useState(new Date(1598051730000));
-    const [mode, setMode] = useState('date')
-    const [show, setShow] = useState(false)
+    const [date, setDate] = useState(new Date());
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+    const [validationMsg, setValidationMsg] = useState('');
+    const [validationType, setValidationType] = useState('');
     const [isUpdate, setIsUpdate] = useState(edit);
     const [pname, setPname] = useState('');
     const [conquestDate, setConquestdate] = useState('');
@@ -38,7 +37,6 @@ export default function PlanetsC({ route }) {
     const [ruler, setRuler] = useState('');
     const [title, setTitle] = useState('');
 
-
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const day = date.getDate().toString().padStart(2, '0');
@@ -47,25 +45,37 @@ export default function PlanetsC({ route }) {
       
         return `${day}/${month}/${year}`;
       };
-      
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
         setShow(false);
-        setDate(currentDate);
+        if(edit == false){
+            setDate(currentDate);
+        } else {
+            setDate(reverseFormatDate(conquestDate));
+        }
         setConquestdate(formatDate(currentDate));
         console.log(formatDate(currentDate));
 
       };
 
-      const showMode = (currentMode) => {
+    const showMode = (currentMode) => {
         setShow(true);
         setMode(currentMode);
       };
-    
+
       const showDatepicker = () => {
         showMode('date');
       };
+
+      const reverseFormatDate = (formattedDate) => {
+        const [day, month, year] = formattedDate.split('/');
+        const isoDate = new Date(`${year}-${month}-${day}`).toISOString();
+        return isoDate;
+      };
+      
+      
+
 
     useEffect(() => {
         if (edit) {
@@ -89,7 +99,7 @@ export default function PlanetsC({ route }) {
         }
     }, [planet, edit]);
 
-    const clearFields = () => {
+    const clearFields= () => {
         setIsUpdate(false);
         edit = false;
         setPname('');
@@ -109,6 +119,30 @@ export default function PlanetsC({ route }) {
     }
 
     const handleAddPlanet = () => {
+        
+        let message = '';
+        let type = '';
+    
+        if (!pname || !primaryColor || !secondaryColor || !population || !naturalResources || !humanSettlements || !galaxy || !solarSystem || !spaceCoordinates || !transmissionFrequency || !communicationCode || !ruler || !title || !conquestDate) {
+            message = 'Todos os campos são obrigatórios.';
+            type = 'error';
+        } else if (!/^\d+\.\d+\.\d+\s.*$/) {
+            message = 'A frequência de transmissão deve seguir o padrão "x.xxx.xxx".';
+            type = 'error';
+        } else if (pname.length > 150) {
+            message = 'O nome do planeta deve ter no máximo 150 caracteres.';
+            type = 'error';
+        } else {
+            message = '';
+            type = '';
+        }
+    
+        setValidationMessage(message, type);
+    
+        if (message || type) {
+            return;
+        }
+
         if (isUpdate) {
             PlanetList.updatePlanet(planet.id, pname, conquestDate, primaryColor, secondaryColor, population, naturalResources, humanSettlements, galaxy, solarSystem, spaceCoordinates, transmissionFrequency, communicationCode, ruler, title);
             clearFields();
@@ -137,6 +171,12 @@ export default function PlanetsC({ route }) {
         navigation.navigate('Home');
 
     }
+    const setValidationMessage = (message, type) => {
+        setValidationMsg(message);
+        setValidationType(type);
+      };
+
+
 
     return (
         <LinearGradient colors={['#FFFFFF', '#FCFCFC']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -165,6 +205,8 @@ export default function PlanetsC({ route }) {
 
       )}
 
+            { planet.mocked ? null :
+            <View>
             <Text>Cor Primária</Text>
             <RNPickerSelect
     style={styles.inputSelect}
@@ -202,9 +244,12 @@ export default function PlanetsC({ route }) {
         { label: 'Rênio', value: '#606C66' }         
     ]}
 />
+            </View>
+}
 
 
-
+        {   planet.mocked ? null :
+            <View>  
             <Text>Cor Secundária</Text>
             <RNPickerSelect
     style={styles.inputSelect}
@@ -242,6 +287,8 @@ export default function PlanetsC({ route }) {
         { label: 'Rênio', value: '#606C66' }         
     ]}
 />
+            </View>
+}
 
             <Text>População</Text>
             <TextInput
@@ -305,20 +352,16 @@ export default function PlanetsC({ route }) {
                 value={title}
                 onChangeText={setTitle}
             />
-            <TouchableOpacity style={styles.button} onPress={handleAddPlanet}>
-                <Text style={styles.buttonText}>{isUpdate ? 'Editar' : 'Cadastrar'}
-                </Text>
-            </TouchableOpacity>
+            <Button
+                title={isUpdate ? "Editar" : "Cadastrar"}
+                onPress={handleAddPlanet}
+            />
             {isUpdate && (
-                <TouchableOpacity style={styles.button} onPress={clearFields}>
-                    <Text style={styles.buttonText}>Cancelar Alterações</Text>
-                </TouchableOpacity>
+                <Button title="Cancelar Alterações" onPress={clearFields} />
             )}
+            <ValidateText Msg={validationMsg} type={validationType} />
         </View>
             </ScrollView>
         </LinearGradient>
     );
-
 }
-
-

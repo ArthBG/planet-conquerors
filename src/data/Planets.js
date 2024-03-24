@@ -14,7 +14,10 @@ export const PlanetsData =
     transmissionFrequency: '1.000.000 Hz',
     communicationCode: 'Terra-564',
     ruler: 'Travis',
-    title: 'Imperador'},
+    title: 'Imperador',
+    mocked: true
+
+},
 
     {name: 'Marte',
     conquestDate: '10/01/2077',
@@ -30,7 +33,9 @@ export const PlanetsData =
     transmissionFrequency: '1.000.000 Hz',
     communicationCode: 'Marte-564',
     ruler: 'Yeat',
-    title: 'Rei'},
+    title: 'Rei',
+    mocked: true
+},
 
     {name: 'Júpiter',
     conquestDate: '25/09/3071',
@@ -46,7 +51,8 @@ export const PlanetsData =
     transmissionFrequency: '1.000.000 Hz',
     communicationCode: 'Júpiter-564',
     ruler: 'Luna',
-    title: 'Rainha'},
+    title: 'Rainha',
+    mocked: true},
 
     {name: 'Saturno',
     conquestDate: '30/12/3171',
@@ -62,7 +68,8 @@ export const PlanetsData =
     transmissionFrequency: '1.000.000 Hz',
     communicationCode: 'Saturno-564',
     ruler: 'Ritchie',
-    title: 'Rei'},
+    title: 'Rei',
+    mocked: true},
 
     {name: 'Larypisis Home',
     conquestDate: '01/01/3952',
@@ -78,6 +85,7 @@ export const PlanetsData =
     transmissionFrequency: '-8.821.612 Hz',
     communicationCode: 'Larypisis-812',
     ruler: 'Lary',
-    title: 'Imperador'}
+    title: 'Imperador',
+    mocked: true}
 ];
 

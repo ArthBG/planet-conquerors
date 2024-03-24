@@ -1,5 +1,5 @@
 export default class Planet {
-  constructor(name, conquestDate, image, primaryColor, secondaryColor, population, naturalResources, humanSettlements, galaxy, solarSystem, spaceCoordinates, transmissionFrequency, communicationCode, ruler, title) {
+  constructor(name, conquestDate, image, primaryColor, secondaryColor, population, naturalResources, humanSettlements, galaxy, solarSystem, spaceCoordinates, transmissionFrequency, communicationCode, ruler, title, mocked) {
     this.name = name;
     this.conquestDate = conquestDate;
     this.image = image;
@@ -15,6 +15,7 @@ export default class Planet {
     this.communicationCode = communicationCode;
     this.ruler = ruler;
     this.title = title;
+    this.mocked = mocked;
     this.id = this.generateId();
   }
     generateId() {

@@ -19,7 +19,8 @@ class PlanetLista {
       PlanetsData.map((planet) => planet.transmissionFrequency),
       PlanetsData.map((planet) => planet.communicationCode),
       PlanetsData.map((planet) => planet.ruler),
-      PlanetsData.map((planet) => planet.title)
+      PlanetsData.map((planet) => planet.title),
+      PlanetsData.map((planet) => planet.mocked)
       return new Planet(
         planet.name,
         planet.conquestDate,
@@ -35,7 +36,8 @@ class PlanetLista {
         planet.transmissionFrequency,
         planet.communicationCode,
         planet.ruler,
-        planet.title
+        planet.title,
+        planet.mocked
       );
       });
       this.planets.push(...fixedPlanets);
