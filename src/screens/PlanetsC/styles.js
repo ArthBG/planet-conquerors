@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E9E9E9',
     },
     button: {
-        backgroundColor: '#ff0',
+        backgroundColor: '#000436',
         width: 300,
         height: 40,
         borderRadius: 8,
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     buttonText: {
-        color: '#000',
+        color: '#E9E9E9',
         fontWeight: 'bold',
     },
 });

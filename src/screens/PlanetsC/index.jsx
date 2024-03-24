@@ -31,7 +31,6 @@ export default function PlanetsC({ route }) {
     const [communicationCode, setCommunicationcode] = useState('');
     const [ruler, setRuler] = useState('');
     const [title, setTitle] = useState('');
-    const [planets, setPlanets] = useState(PlanetList.planets);
 
     useEffect(() => {
         if (edit) {
@@ -53,7 +52,7 @@ export default function PlanetsC({ route }) {
         } else {
             clearFields();
         }
-    }, [planets, edit]);
+    }, [planet, edit]);
 
     const clearFields = () => {
         setIsUpdate(false);
@@ -98,9 +97,9 @@ export default function PlanetsC({ route }) {
             );
             PlanetList.addPlanet(newPlanet);
 
+            clearFields();
         }
         navigation.navigate('Home');
-        clearFields();
 
     }
 
