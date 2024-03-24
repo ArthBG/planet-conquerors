@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity,Image } from 'react-native'
+import { View, Text, TouchableOpacity,Image,ScrollView } from 'react-native'
 import { useNavigation } from "@react-navigation/native";
 import Title from '../../components/Title'
 import PlanetList from '../../models/ListPlanets'
@@ -19,10 +19,11 @@ export default function Planet({ route }) {
 
   return (
     <View style={styles.container}>
+      <ScrollView style={styles.scrollViewContainer}>
       {data ? (
-        <View style={styles.container}>
+        <View style={styles.containerStuff}>
          {data.image ?
-          <Image source={data.image} style={{ width: 280, height: 280 }} />
+          <Image source={data.image} style={{ width: 280, height: 280, borderRadius: 140 }} />
           : (
             <PlanetMaker primaryColor={data.primaryColor} secondaryColor={data.secondaryColor} />
           ) 
@@ -53,6 +54,7 @@ export default function Planet({ route }) {
       ) : (
         <Text style={styles.text}>Planeta não encontrado</Text>
       )}
+      </ScrollView>
     </View>
   );
 }

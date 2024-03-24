@@ -35,18 +35,15 @@ export default function Home() {
           <Title title="PlanetC" color={"#fff"} size={25} />
           <Text style={styles.subtitle}>Aqui estão suas conquistas e descobertas de planetas de todo o universo</Text>
         </View>
-        {/* 
-         */}
          <View style={styles.backgroundw}>
-          <Text style={styles.subtitle}>Planetas descobertos</Text>
-          <View style={styles.containerPlanet}>
-            <Text style={styles.subtitle}>0</Text>
-            </View>
-          <Title title="Planetas" color={"#fff"} size={25} />
+          <View style={styles.containerTexts}>
+          <Title title="Planetas conquistados" color={"#fff"} size={25} />
+          <Text style={styles.subtitle}>Clique em um planeta para ver mais detalhes</Text>
+          </View>
         </View>
         <LinearGradient
           style={styles.containerPlanets}
-          colors={['#fff', '#EEEEEE', '#E3E3E3']}
+          colors={['#000326','#000439', '#00032F', '#00021E']}
           start={{ x: 1, y: 0 }}
           end={{ x: 1, y: 1 }}>
           {allPlanets.length > 0 ? (
@@ -97,11 +94,14 @@ const styles = {
     justifyContent: 'center',
 
   },
+  containerTexts: {
+    marginLeft: 20,
+  },
   backgroundw: {
     width: '100%',
+    backgroundColor: '#000326',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    height: 300,
   },
   subtitle: {
     color: '#F7F7F7',
@@ -113,11 +113,11 @@ const styles = {
     height: 'fit-content',
   },
   containerPlanetsList: {
-    marginTop: 20,
+    marginTop: 1,
     alignItems: 'center',
   },
   planet: {
-    backgroundColor: '#000326',
+    backgroundColor: '#000538',
     borderRadius: 10,
     width: 230,
     height: 170,
