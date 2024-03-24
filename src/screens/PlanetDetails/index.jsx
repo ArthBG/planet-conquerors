@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import Title from '../../components/Title'
 import PlanetList from '../../models/ListPlanets'
 import styles from './styles'
+import PlanetMaker from '../../components/PlanetMaker';
 export default function Planet({ route }) {
   const navigation = useNavigation();
   const { data } = route.params;
@@ -22,7 +23,9 @@ export default function Planet({ route }) {
         <View style={styles.container}>
          {data.image ?
           <Image source={data.image} style={{ width: 280, height: 280 }} />
-          : null 
+          : (
+            <PlanetMaker primaryColor={data.primaryColor} secondaryColor={data.secondaryColor} />
+          ) 
         } 
       <Title title={data.name} color={data.primaryColor} size={25} />
       <Text style={styles.text}>{data.conquestDate}</Text>

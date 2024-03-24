@@ -5,17 +5,17 @@ const PlanetMaker = ({ primaryColor, secondaryColor }) => {
     return (
         <LinearGradient
         style={{
-            width: 280,
-            height: 280,
+            width: 110,
+            height: 110,
             borderRadius: 140,
             justifyContent: "center",
             alignItems: "center",
         }}
         colors={[primaryColor, secondaryColor]}
-        start={{ x: 1, y: 0 }}
-        end={{ x: 1, y: 1 }}
+        start={{ x: 0.8, y: 1.3 }}
+        end={{ x: 1.4, y: 0.5 }}
         >
-        <Text>0</Text>
+        <Text></Text>
         </LinearGradient>
     );
     }

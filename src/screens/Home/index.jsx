@@ -132,8 +132,8 @@ const styles = {
     marginTop: 10,
   },
   planetImage: {
-    width: 90,
-    height: 100,
-    borderRadius: 50,
+    width: 110,
+    height: 110,
+    borderRadius: 140,
   },
 }

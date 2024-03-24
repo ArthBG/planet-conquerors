@@ -66,7 +66,7 @@ export const PlanetsData =
 
     {name: 'Larypisis Home',
     conquestDate: '01/01/3952',
-    image:  require('../../assets/images/saturno.webp'),
+    image:  '',
     primaryColor: '#000',
     secondaryColor: '#628',
     population: '9003',
