@@ -1,5 +1,5 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { Text, View, Image, ScrollView } from "react-native";
+import { Text } from "react-native";
 
 const PlanetMaker = ({ primaryColor, secondaryColor }) => {
     return (

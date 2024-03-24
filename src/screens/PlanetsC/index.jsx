@@ -8,6 +8,7 @@ import Title from '../../components/Title'
 import Planet from '../../models/Planet';
 import PlanetList from '../../models/ListPlanets';
 import styles from './styles';
+import RNPickerSelect from 'react-native-picker-select';
 
 
 
@@ -81,6 +82,7 @@ export default function PlanetsC({ route }) {
             const newPlanet = new Planet(
                 pname,
                 conquestDate,
+                null,
                 primaryColor,
                 secondaryColor,
                 population,
@@ -103,7 +105,7 @@ export default function PlanetsC({ route }) {
     }
 
     return (
-        <LinearGradient colors={['#fff', '#628']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <LinearGradient colors={['#420FFF']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <ScrollView>
                 <View style={styles.containerAllS}>
             <Title title="Cadastro de Planetas" />
@@ -125,6 +127,14 @@ export default function PlanetsC({ route }) {
                 value={primaryColor}
                 onChangeText={setPrimarycolor}
             />
+            {/* <RNPickerSelect
+            onValueChange={(value) => console.log(value)}
+            items={[
+                { label: 'Football', value: 'football' },
+                { label: 'Baseball', value: 'baseball' },
+                { label: 'Hockey', value: 'hockey' },
+            ]}
+        /> */}
             <Text>Cor Secundária</Text>
             <TextInput
                 style={styles.input}
