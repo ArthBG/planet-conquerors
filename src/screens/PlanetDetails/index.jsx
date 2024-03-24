@@ -17,18 +17,6 @@ export default function Planet({ route }) {
     navigation.navigate('Home');
   }
 
-  const renderDate = (date) => {
-    if (typeof date !== 'string') {
-      date = String(date);
-    }
-    const dateArray = date.split('/');
-    const day = dateArray[0];
-    const month = dateArray[1];
-    const year = dateArray[2];
-    return `${day}/${month}/${year}`;
-    
-  }
-
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollViewContainer}>
@@ -43,7 +31,7 @@ export default function Planet({ route }) {
       <Text style={{color: `${data.primaryColor}`, fontSize: 25, 
       fontWeight: 'bold', textShadowColor: `${data.secondaryColor}`, textShadowOffset: {width: 1.2, height: 1.2}, textShadowRadius: 1,
     }}>{data.name}</Text>
-      <Text style={styles.text}>{renderDate(data.conquestDate)}</Text>
+      <Text style={styles.text}>{data.conquestDate}</Text>
       <Text style={styles.text}>{data.primaryColor}</Text>
       <Text style={styles.text}>{data.secondaryColor}</Text>
       <Text style={styles.text}>{data.population}</Text>

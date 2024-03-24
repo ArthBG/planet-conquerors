@@ -1,7 +1,7 @@
 export const PlanetsData = 
 [
    {name: 'Terra',
-    conquestDate: '05/02/0000',
+    conquestDate: '00/00/0000',
     image: require('../../assets/images/earth.jpg'),
     primaryColor: '#0066F0',
     secondaryColor: '#fff',

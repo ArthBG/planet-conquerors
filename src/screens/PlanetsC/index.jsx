@@ -39,11 +39,23 @@ export default function PlanetsC({ route }) {
     const [title, setTitle] = useState('');
 
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+      
+        return `${day}/${month}/${year}`;
+      };
+      
+
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
         setShow(false);
         setDate(currentDate);
-        console.log(currentDate);
+        setConquestdate(formatDate(currentDate));
+        console.log(formatDate(currentDate));
+
       };
 
       const showMode = (currentMode) => {
@@ -139,13 +151,14 @@ export default function PlanetsC({ route }) {
             />
             <Text>Data de Conquista</Text>
             <Button onPress={showDatepicker} title="Show date picker!" />
-            <Text>selected: {date.toLocaleString()}</Text>
+            { isUpdate == true ? <Text>{conquestDate}</Text> :
+            <Text>Data Selecionada: {formatDate(date)}</Text> 
+            }
       {show && (
         <DateTimePicker
-            testID="datePicker"
-            dateFormat='DD/MM/YYYY'
+            testID='dateTimePicker'
             value={date}
-            mode={mode}
+            mode={'date'}
             display="default"
             onChange={onChange}
         />
