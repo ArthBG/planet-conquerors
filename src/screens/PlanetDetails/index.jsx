@@ -43,10 +43,10 @@ export default function Planet({ route }) {
       <Text style={styles.text}>{data.ruler}</Text>
       <Text style={styles.text}>{data.title}</Text>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button} onPress={editPlanet}>
+        <TouchableOpacity style={{borderColor: data.primaryColor,  paddingVertical: 10,  paddingHorizontal: 20, borderRadius: 8, borderWidth: 2 }} onPress={editPlanet}>
           <Text style={styles.buttonText}>Editar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={deletePlanet}>
+        <TouchableOpacity style={{backgroundColor: '#FF0000', borderColor: '#dc3545', paddingVertical: 10, paddingHorizontal: 20, borderRadius: 8, borderWidth: 2, }} onPress={deletePlanet}>
           <Text style={styles.buttonText}>Excluir</Text>
         </TouchableOpacity>
       </View>

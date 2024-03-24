@@ -105,10 +105,10 @@ export default function PlanetsC({ route }) {
     }
 
     return (
-        <LinearGradient colors={['#420FFF']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <LinearGradient colors={['#FFFFFF', '#FCFCFC']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <ScrollView>
                 <View style={styles.containerAllS}>
-            <Title title="Cadastro de Planetas" />
+            <Title title="Cadastro de Planetas" color={"#000109"}/>
             <Text>Nome do Planeta</Text>
             <TextInput
                 style={styles.input}
@@ -122,25 +122,83 @@ export default function PlanetsC({ route }) {
                 onChangeText={setConquestdate}
             />
             <Text>Cor Primária</Text>
-            <TextInput
-                style={styles.input}
-                value={primaryColor}
-                onChangeText={setPrimarycolor}
-            />
-            {/* <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
-            items={[
-                { label: 'Football', value: 'football' },
-                { label: 'Baseball', value: 'baseball' },
-                { label: 'Hockey', value: 'hockey' },
-            ]}
-        /> */}
+            <RNPickerSelect
+    style={styles.inputSelect}
+    value={primaryColor}
+    onValueChange={(value) => setPrimarycolor(value)}
+    items={[
+        { label: 'Vermelho', value: '#FF0000' },     
+        { label: 'Azul', value: '#0000FF' },         
+        { label: 'Verde', value: '#008000' },       
+        { label: 'Amarelo', value: '#FFFF00' },      
+        { label: 'Preto', value: '#000000' },       
+        { label: 'Branco', value: '#FFFFFF' },      
+        { label: 'Cinza', value: '#808080' },        
+        { label: 'Roxo', value: '#800080' },        
+        { label: 'Laranja', value: '#FFA500' },  
+        { label: 'Marrom', value: '#A52A2A' },       
+        { label: 'Rosa', value: '#FFC0CB' },        
+        { label: 'Ciano', value: '#00FFFF' },        
+        { label: 'Magenta', value: '#FF00FF' },     
+        { label: 'Ouro', value: '#FFD700' },         
+        { label: 'Prata', value: '#C0C0C0' },       
+        { label: 'Bronze', value: '#CD7F32' },      
+        { label: 'Cobre', value: '#B87333' },   
+        { label: 'Ferro', value: '#43464B' },        
+        { label: 'Alumínio', value: '#A9ACB6' },     
+        { label: 'Titânio', value: '#708090' },      
+        { label: 'Níquel', value: '#A8A878' },       
+        { label: 'Zinco', value: '#B5B5B5' },       
+        { label: 'Cromo', value: '#8A2BE2' },        
+        { label: 'Platina', value: '#E5E4E2' },      
+        { label: 'Paládio', value: '#E5E4E2' },      
+        { label: 'Ródio', value: '#5F9EA0' },       
+        { label: 'Iridium', value: '#BFC1C2' },     
+        { label: 'Osmio', value: '#848482' },        
+        { label: 'Rênio', value: '#606C66' }         
+    ]}
+/>
+
+
+
             <Text>Cor Secundária</Text>
-            <TextInput
-                style={styles.input}
-                value={secondaryColor}
-                onChangeText={setSecondarycolor}
-            />
+            <RNPickerSelect
+    style={styles.inputSelect}
+    value={secondaryColor}
+    onValueChange={(value) => setSecondarycolor(value)}
+    items={[
+        { label: 'Vermelho', value: '#FF0000' },     
+        { label: 'Azul', value: '#0000FF' },         
+        { label: 'Verde', value: '#008000' },       
+        { label: 'Amarelo', value: '#FFFF00' },      
+        { label: 'Preto', value: '#000000' },       
+        { label: 'Branco', value: '#FFFFFF' },      
+        { label: 'Cinza', value: '#808080' },        
+        { label: 'Roxo', value: '#800080' },        
+        { label: 'Laranja', value: '#FFA500' },  
+        { label: 'Marrom', value: '#A52A2A' },       
+        { label: 'Rosa', value: '#FFC0CB' },        
+        { label: 'Ciano', value: '#00FFFF' },        
+        { label: 'Magenta', value: '#FF00FF' },     
+        { label: 'Ouro', value: '#FFD700' },         
+        { label: 'Prata', value: '#C0C0C0' },       
+        { label: 'Bronze', value: '#CD7F32' },      
+        { label: 'Cobre', value: '#B87333' },   
+        { label: 'Ferro', value: '#43464B' },        
+        { label: 'Alumínio', value: '#A9ACB6' },     
+        { label: 'Titânio', value: '#708090' },      
+        { label: 'Níquel', value: '#A8A878' },       
+        { label: 'Zinco', value: '#B5B5B5' },       
+        { label: 'Cromo', value: '#8A2BE2' },        
+        { label: 'Platina', value: '#E5E4E2' },      
+        { label: 'Paládio', value: '#E5E4E2' },      
+        { label: 'Ródio', value: '#5F9EA0' },       
+        { label: 'Iridium', value: '#BFC1C2' },     
+        { label: 'Osmio', value: '#848482' },        
+        { label: 'Rênio', value: '#606C66' }         
+    ]}
+/>
+
             <Text>População</Text>
             <TextInput
                 style={styles.input}

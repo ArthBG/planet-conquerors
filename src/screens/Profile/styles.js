@@ -11,6 +11,8 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         alignSelf: 'center',
         margin: 20,
+        borderColor: '#001f3f',
+        borderWidth: 5
     },
     });
 
