@@ -28,6 +28,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 10,
     },
+    buttonDate:{
+        backgroundColor: '#000',
+        width: 200,
+        height: 40,
+        borderRadius: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 10,
+
+    },
     buttonText: {
         color: '#E9E9E9',
         fontWeight: 'bold',

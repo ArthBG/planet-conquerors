@@ -37,8 +37,8 @@ export default function PlanetsC({ route }) {
     const [ruler, setRuler] = useState('');
     const [title, setTitle] = useState('');
 
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
+    const formatDate = (dateF) => {
+        const date = new Date(dateF);
         const day = date.getDate().toString().padStart(2, '0');
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const year = date.getFullYear();
@@ -46,7 +46,7 @@ export default function PlanetsC({ route }) {
         return `${day}/${month}/${year}`;
       };
 
-    const onChange = (event, selectedDate) => {
+    const onChange = (selectedDate) => {
         const currentDate = selectedDate;
         setShow(false);
         if(edit == false){
@@ -67,13 +67,6 @@ export default function PlanetsC({ route }) {
       const showDatepicker = () => {
         showMode('date');
       };
-
-      const reverseFormatDate = (formattedDate) => {
-        const [day, month, year] = formattedDate.split('/');
-        const isoDate = new Date(`${year}-${month}-${day}`).toISOString();
-        return isoDate;
-      };
-      
       
 
 
@@ -100,8 +93,7 @@ export default function PlanetsC({ route }) {
     }, [planet, edit]);
 
     const clearFields= () => {
-        setIsUpdate(false);
-        edit = false;
+       
         setPname('');
         setConquestdate('');
         setPrimarycolor('');
@@ -147,6 +139,8 @@ export default function PlanetsC({ route }) {
             PlanetList.updatePlanet(planet.id, pname, conquestDate, primaryColor, secondaryColor, population, naturalResources, humanSettlements, galaxy, solarSystem, spaceCoordinates, transmissionFrequency, communicationCode, ruler, title);
             clearFields();
         } else {
+            edit = false;
+            setIsUpdate(false);
             const newPlanet = new Planet(
                 pname,
                 conquestDate,
@@ -190,7 +184,9 @@ export default function PlanetsC({ route }) {
                 onChangeText={setPname}
             />
             <Text>Data de Conquista</Text>
-            <Button onPress={showDatepicker} title="Show date picker!" />
+            <TouchableOpacity style={styles.buttonDate} onPress={showDatepicker}>
+                <Text style={styles.buttonText}>Selecionar Data 🗓</Text>
+            </TouchableOpacity>
             { isUpdate == true ? <Text>{conquestDate}</Text> :
             <Text>Data Selecionada: {formatDate(date)}</Text> 
             }
@@ -352,12 +348,13 @@ export default function PlanetsC({ route }) {
                 value={title}
                 onChangeText={setTitle}
             />
-            <Button
-                title={isUpdate ? "Editar" : "Cadastrar"}
-                onPress={handleAddPlanet}
-            />
+            <TouchableOpacity style={styles.button} onPress={handleAddPlanet}>
+                <Text style={styles.buttonText}>{isUpdate ? "Editar" : "Cadastrar"}</Text>
+            </TouchableOpacity>
             {isUpdate && (
-                <Button title="Cancelar Alterações" onPress={clearFields} />
+                <TouchableOpacity style={styles.button} onPress={clearFields}>
+                    <Text  style={styles.buttonText}>Cancelar Alterações</Text>
+                </TouchableOpacity>
             )}
             <ValidateText Msg={validationMsg} type={validationType} />
         </View>
