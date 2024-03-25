@@ -49,6 +49,9 @@ const TabRoutes = () => {
         options={{
           tabBarVisible: false,
           headerShown: false,
+          tabBarItemStyle: {
+            display: "none",
+          },
         }} 
       />
       <Tab.Screen name="PlanetsC" component={PlanetsC} initialParams={{ PlanetsData: null, edit: false }}  options={{
