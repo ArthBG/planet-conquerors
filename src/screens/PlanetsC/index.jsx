@@ -14,7 +14,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function PlanetsC({ route }) {
     let { planet, edit } = route.params;
-
+    console.log(planet);
     const navigation = useNavigation();
     const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('date');
@@ -45,7 +45,6 @@ export default function PlanetsC({ route }) {
       
         return `${day}/${month}/${year}`;
       };
-
     const onChange = (selectedDate) => {
         const currentDate = selectedDate;
         setShow(false);
@@ -200,7 +199,7 @@ export default function PlanetsC({ route }) {
 
       )}
 
-            { planet.mocked ? null :
+            { planet && planet.mocked  ? null :
             <View>
             <Text>Cor Primária</Text>
             <RNPickerSelect
@@ -243,7 +242,7 @@ export default function PlanetsC({ route }) {
 }
 
 
-        {   planet.mocked ? null :
+        {  planet && planet.mocked  ? null :
             <View>  
             <Text>Cor Secundária</Text>
             <RNPickerSelect

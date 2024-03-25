@@ -54,7 +54,7 @@ const TabRoutes = () => {
           },
         }} 
       />
-      <Tab.Screen name="PlanetsC" component={PlanetsC} initialParams={{ PlanetsData: null, edit: false }}  options={{
+      <Tab.Screen name="PlanetsC" component={PlanetsC} initialParams={{ PlanetsData: null , edit: false }}  options={{
           tabBarIcon: ({ focused }) => (
             <Feather
               name="list"

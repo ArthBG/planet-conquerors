@@ -32,8 +32,6 @@ export default function Planet({ route }) {
       fontWeight: 'bold', textShadowColor: `${data.secondaryColor}`, textShadowOffset: {width: 1.2, height: 1.2}, textShadowRadius: 1,
     }}>{data.name}</Text>
       <Text style={styles.text}>{data.conquestDate}</Text>
-      <Text style={styles.text}>{data.primaryColor}</Text>
-      <Text style={styles.text}>{data.secondaryColor}</Text>
       <Text style={styles.text}>{data.population}</Text>
       <Text style={styles.text}>{data.naturalResources}</Text>
       <Text style={styles.text}>{data.humanSettlements}</Text>
