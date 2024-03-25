@@ -10,7 +10,7 @@ export default function Profile() {
             return (
               <View key={index}>
                 <Image source={item.image} style={styles.image} />
-                <Title title={item.name} color={"#000"} />
+                <Title title={item.name} color={"#000"} size={30}/>
                 <Text>{item.age}</Text>
                 <Text>{item.description}</Text>
                 <Text>{item.graduate}</Text>

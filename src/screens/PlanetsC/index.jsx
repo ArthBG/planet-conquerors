@@ -137,7 +137,6 @@ export default function PlanetsC({ route }) {
 
         if (isUpdate) {
             PlanetList.updatePlanet(planet.id, pname, conquestDate, primaryColor, secondaryColor, population, naturalResources, humanSettlements, galaxy, solarSystem, spaceCoordinates, transmissionFrequency, communicationCode, ruler, title);
-            clearFields();
         } else {
             edit = false;
             setIsUpdate(false);
