@@ -30,6 +30,7 @@ Certifique-se de ter o ambiente de desenvolvimento React Native configurado em s
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request com melhorias, correções de bugs, ou novas funcionalidades.
+FelipeDev
 
 ## Autor
 
