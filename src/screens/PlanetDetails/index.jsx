@@ -4,6 +4,7 @@ import Title from '../../components/Title'
 import PlanetList from '../../models/ListPlanets'
 import styles from './styles'
 import PlanetMaker from '../../components/PlanetMaker';
+import { Feather, MaterialCommunityIcons, Fontisto, FontAwesome5Brands } from '@expo/vector-icons';
 export default function Planet({ route }) {
   const navigation = useNavigation();
   const { data } = route.params;
@@ -27,16 +28,34 @@ export default function Planet({ route }) {
           : (
             <PlanetMaker primaryColor={data.primaryColor} secondaryColor={data.secondaryColor} />
           ) 
-        } 
+      }
+      <View style={styles.titleContainer}> 
       <Text style={{color: `${data.primaryColor}`, fontSize: 25, 
       fontWeight: 'bold', textShadowColor: `${data.secondaryColor}`, textShadowOffset: {width: 1.2, height: 1.2}, textShadowRadius: 1,
     }}>{data.name}</Text>
-      <Text style={styles.text}>{data.conquestDate}</Text>
+    <View style={styles.lola}>
+    <MaterialCommunityIcons name="account-group" size={24} color={data.primaryColor} />
       <Text style={styles.text}>{data.population}</Text>
+      </View>
+      </View>
+      <View style={styles.resourcesContainer}>
+      <View style={styles.definePositions2}>
+        <View style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 5}}>
+      <Fontisto name="sun" size={22} color={data.primaryColor} />
+      <Text style={styles.text}>{data.solarSystem}</Text>
+      </View>
+      <View style={styles.definePositions}>
+        <Fontisto name="date" size={22} color={data.primaryColor} />
+      <Text style={styles.text}>{data.conquestDate}</Text>
+      </View>
+      <View style={styles.definePositions}>
+      <Fontisto name="electronjs" size={22} color={data.primaryColor} />
+      <Text style={styles.text}>{data.galaxy}</Text>
+      </View>
+      </View>
+      </View>
       <Text style={styles.text}>{data.naturalResources}</Text>
       <Text style={styles.text}>{data.humanSettlements}</Text>
-      <Text style={styles.text}>{data.galaxy}</Text>
-      <Text style={styles.text}>{data.solarSystem}</Text>
       <Text style={styles.text}>{data.spaceCoordinates}</Text>
       <Text style={styles.text}>{data.transmissionFrequency}</Text>
       <Text style={styles.text}>{data.communicationCode}</Text>
