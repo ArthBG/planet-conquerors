@@ -8,11 +8,16 @@ const styles = StyleSheet.create({
         marginTop: 40,
         marginBottom: 20,
     },
+    Text: {
+        color: '#fff',
+        fontSize: 15,
+        fontWeight: 'bold',
+    },
     input: {
         backgroundColor: '#E9E9E9',
         width: 300,
         height: 40,
-        marginBottom: 10,
+        marginBottom: 25,
         borderRadius: 8,
         paddingHorizontal: 10,
     },

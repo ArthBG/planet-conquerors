@@ -175,19 +175,19 @@ export default function PlanetsC({ route }) {
         <ImageBackground source={require('../../../assets/images/darkbluebg.jpg')} style={styles.background}>
             <ScrollView>
                 <View style={styles.containerAllS}>
-            <Title title="Cadastro de Planetas" color={"#000109"}/>
-            <Text>Nome do Planeta</Text>
+            <Title title="Cadastro de Planetas" color={"#fff"}/>
+            <Text style={styles.Text}>Nome do Planeta</Text>
             <TextInput
                 style={styles.input}
                 value={pname}
                 onChangeText={setPname}
             />
-            <Text>Data de Conquista</Text>
+            <Text style={styles.Text}>Data de Conquista</Text>
             <TouchableOpacity style={styles.buttonDate} onPress={showDatepicker}>
                 <Text style={styles.buttonText}>Selecionar Data 🗓</Text>
             </TouchableOpacity>
-            { isUpdate == true ? <Text>{conquestDate}</Text> : 
-            <Text>{formatDate(date)}</Text>
+            { isUpdate == true ? <Text style={styles.Textdate}>{conquestDate}</Text> : 
+            <Text style={styles.Textdate}>{formatDate(date)}</Text>
             }
       {show && (
         <DateTimePicker
@@ -203,7 +203,7 @@ export default function PlanetsC({ route }) {
 
             { planet && planet.mocked  ? null :
             <View>
-            <Text>Cor Primária</Text>
+            <Text style={styles.Text}>Cor Primária</Text>
             <RNPickerSelect
     style={styles.inputSelect}
     value={primaryColor}
@@ -246,7 +246,7 @@ export default function PlanetsC({ route }) {
 
         {  planet && planet.mocked  ? null :
             <View>  
-            <Text>Cor Secundária</Text>
+            <Text style={styles.Text}>Cor Secundária</Text>
             <RNPickerSelect
     style={styles.inputSelect}
     value={secondaryColor}
@@ -286,63 +286,63 @@ export default function PlanetsC({ route }) {
             </View>
 }
 
-            <Text>População</Text>
+            <Text style={styles.Text}>População</Text>
             <TextInput
                 style={styles.input}
                 value={population}
                 onChangeText={setPopulation}
                 keyboardType="numeric"
             />
-            <Text>Recursos Naturais</Text>
+            <Text style={styles.Text}>Recursos Naturais</Text>
             <TextInput
                 style={styles.input}
                 value={naturalResources}
                 onChangeText={setNaturalresources}
             />
-            <Text>Número de Assentamentos Humanos</Text>
+            <Text style={styles.Text}>Número de Assentamentos Humanos</Text>
             <TextInput
                 style={styles.input}
                 value={humanSettlements}
                 onChangeText={setHumansettlements}
                 keyboardType="numeric"
             />
-            <Text>Galáxia</Text>
+            <Text style={styles.Text}>Galáxia</Text>
             <TextInput
                 style={styles.input}
                 value={galaxy}
                 onChangeText={setGalaxy}
             />
-            <Text>Sistema Solar</Text>
+            <Text style={styles.Text}>Sistema Solar</Text>
             <TextInput
                 style={styles.input}
                 value={solarSystem}
                 onChangeText={setSolarsystem}
             />
-            <Text>Coordenadas Espaciais</Text>
+            <Text style={styles.Text}>Coordenadas Espaciais</Text>
             <TextInput
                 style={styles.input}
                 value={spaceCoordinates}
                 onChangeText={setSpacecoordinates}
             />
-            <Text>Frequência de Transmissão</Text>
+            <Text style={styles.Text}>Frequência de Transmissão</Text>
             <TextInput
                 style={styles.input}
                 value={transmissionFrequency}
                 onChangeText={setTransmissionfrequency}
             />
-            <Text>Codificação de Comunicação</Text>
+            <Text style={styles.Text}>Codificação de Comunicação</Text>
             <TextInput
                 style={styles.input}
                 value={communicationCode}
                 onChangeText={setCommunicationcode}
             />
-            <Text>Governante do Planeta</Text>
+            <Text style={styles.Text}>Governante do Planeta</Text>
             <TextInput
                 style={styles.input}
                 value={ruler}
                 onChangeText={setRuler}
             />
-            <Text>Título do Governante</Text>
+            <Text style={styles.Text}>Título do Governante</Text>
             <TextInput
                 style={styles.input}
                 value={title}
