@@ -14,10 +14,8 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function PlanetsC({ route }) {
     let { planet, edit } = route.params;
-    console.log(planet);
     const navigation = useNavigation();
     const [date, setDate] = useState(new Date());
-    const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
     const [validationMsg, setValidationMsg] = useState('');
     const [validationType, setValidationType] = useState('');
@@ -36,7 +34,9 @@ export default function PlanetsC({ route }) {
     const [communicationCode, setCommunicationcode] = useState('');
     const [ruler, setRuler] = useState('');
     const [title, setTitle] = useState('');
-
+    console.log('data '+ date);
+    console.log('conquest date ' + conquestDate);
+    
     const formatDate = (dateF) => {
         const date = new Date(dateF);
         const day = date.getDate().toString().padStart(2, '0');
@@ -45,7 +45,13 @@ export default function PlanetsC({ route }) {
       
         return `${day}/${month}/${year}`;
       };
-    const onChange = (selectedDate) => {
+
+      const reverseFormatDate = (dateString) => {
+        const [day, month, year] = dateString.split('/');
+        const date = new Date(year, month - 1, day);
+        return date;
+    };
+    const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
         setShow(false);
         if(edit == false){
@@ -54,19 +60,11 @@ export default function PlanetsC({ route }) {
             setDate(reverseFormatDate(conquestDate));
         }
         setConquestdate(formatDate(currentDate));
-        console.log(formatDate(currentDate));
-
-      };
-
-    const showMode = (currentMode) => {
-        setShow(true);
-        setMode(currentMode);
-      };
-
-      const showDatepicker = () => {
-        showMode('date');
       };
       
+        const showDatepicker = () => {
+            setShow(true);
+        };
 
 
     useEffect(() => {
@@ -185,14 +183,15 @@ export default function PlanetsC({ route }) {
             <TouchableOpacity style={styles.buttonDate} onPress={showDatepicker}>
                 <Text style={styles.buttonText}>Selecionar Data 🗓</Text>
             </TouchableOpacity>
-            { isUpdate == true ? <Text>{conquestDate}</Text> :
-            <Text>Data Selecionada: {formatDate(date)}</Text> 
+            { isUpdate == true ? <Text>{conquestDate}</Text> : 
+            <Text>{formatDate(date)}</Text>
             }
       {show && (
         <DateTimePicker
             testID='dateTimePicker'
             value={date}
             mode={'date'}
+            is24Hour={true}
             display="default"
             onChange={onChange}
         />
