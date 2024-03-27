@@ -1,9 +1,8 @@
 //Cadastro dos planetas
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 import ValidateText from '../../components/ValidateText';
 import { useState, useEffect } from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from "@react-navigation/native";
 import Title from '../../components/Title'
 import Planet from '../../models/Planet';
@@ -173,7 +172,7 @@ export default function PlanetsC({ route }) {
 
 
     return (
-        <LinearGradient colors={['#FFFFFF', '#FCFCFC']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ImageBackground source={require('../../../assets/images/darkbluebg.jpg')} style={styles.background}>
             <ScrollView>
                 <View style={styles.containerAllS}>
             <Title title="Cadastro de Planetas" color={"#000109"}/>
@@ -360,6 +359,6 @@ export default function PlanetsC({ route }) {
             <ValidateText Msg={validationMsg} type={validationType} />
         </View>
             </ScrollView>
-        </LinearGradient>
+        </ImageBackground>
     );
 }
