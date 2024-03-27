@@ -1,5 +1,9 @@
 import { View, Text } from 'react-native'
+import React, { useState, useEffect } from 'react'
+
+
 const ValidateText = ({Msg, type}) => {
+
   const styles = {
     ValidateText: {
       color: type == 'error' ? '#ff0000' : '#00ff00',
@@ -10,13 +14,15 @@ const ValidateText = ({Msg, type}) => {
       marginBottom: 10
     }
   }
+
   return (
     <View>
-      <Text style={styles.ValidateText}>{Msg}</Text>
-    </View>
   
+        <Text style={styles.ValidateText}>
+          {Msg}
+        </Text>
+    </View>
   )
- 
 }
 
 export default ValidateText

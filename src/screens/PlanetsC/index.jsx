@@ -14,6 +14,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function PlanetsC({ route }) {
     let { planet, edit } = route.params;
+    console.log(planet);
     const navigation = useNavigation();
     const [date, setDate] = useState(new Date());
     const [show, setShow] = useState(false);
