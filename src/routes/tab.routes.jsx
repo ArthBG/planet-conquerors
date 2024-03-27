@@ -12,7 +12,16 @@ const Tab = createBottomTabNavigator();
 
 const TabRoutes = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}
+    <Tab.Navigator screenOptions={{ headerShown: false,
+    tabBarStyle: { backgroundColor: "#000540",
+    borderTopColor: "#000",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25}
+    }}
     initialRouteName="Home"
     >
      <Tab.Screen name="Home" component={Home} initialParams={{ planets, PlanetsData }} 
@@ -21,11 +30,11 @@ const TabRoutes = () => {
           <Feather
             name="home"
             size={24}
-            color={focused ? "#131313" : "#D6D6D6"}
+            color={focused ? "#83C6F2" : "#D6D6D6"}
           />
         ),
         tabBarLabel: "Inicial",
-        tabBarActiveTintColor: "#131313",
+        tabBarActiveTintColor: "#83C6F2",
         tabBarInactiveTintColor: "#D6D6D6",
       }}/>
       <Tab.Screen name="Desenvolvedor" component={Profile}  
@@ -34,11 +43,11 @@ const TabRoutes = () => {
           <Feather
             name="user"
             size={24}
-            color={focused ? "#131313" : "#D6D6D6"}
+            color={focused ? "#83C6F2" : "#D6D6D6"}
           />
         ),
         tabBarLabel: "Perfil",
-        tabBarActiveTintColor: "#131313",
+        tabBarActiveTintColor: "#83C6F2",
         tabBarInactiveTintColor: "#D6D6D6",
       }}/>
 
@@ -59,11 +68,11 @@ const TabRoutes = () => {
             <Feather
               name="list"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#83C6F2" : "#D6D6D6"}
             />
           ),
           tabBarLabel: "Registre",
-          tabBarActiveTintColor: "#131313",
+          tabBarActiveTintColor: "#83C6F2",
           tabBarInactiveTintColor: "#D6D6D6",
         }} />
     </Tab.Navigator>
