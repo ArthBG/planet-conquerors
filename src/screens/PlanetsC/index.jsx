@@ -36,7 +36,7 @@ export default function PlanetsC({ route }) {
     const [title, setTitle] = useState('');
     console.log('data '+ date);
     console.log('conquest date ' + conquestDate);
-    
+
     const formatDate = (dateF) => {
         const date = new Date(dateF);
         const day = date.getDate().toString().padStart(2, '0');
@@ -90,7 +90,8 @@ export default function PlanetsC({ route }) {
     }, [planet, edit]);
 
     const clearFields= () => {
-       
+        setIsUpdate(false);
+        edit = false;
         setPname('');
         setConquestdate('');
         setPrimarycolor('');
@@ -111,7 +112,7 @@ export default function PlanetsC({ route }) {
         
         let message = '';
         let type = '';
-    
+        if(!isUpdate){
         if (!pname || !primaryColor || !secondaryColor || !population || !naturalResources || !humanSettlements || !galaxy || !solarSystem || !spaceCoordinates || !transmissionFrequency || !communicationCode || !ruler || !title || !conquestDate) {
             message = 'Todos os campos são obrigatórios.';
             type = 'error';
@@ -125,6 +126,7 @@ export default function PlanetsC({ route }) {
             message = '';
             type = '';
         }
+    }
     
         setValidationMessage(message, type);
     
@@ -134,6 +136,7 @@ export default function PlanetsC({ route }) {
 
         if (isUpdate) {
             PlanetList.updatePlanet(planet.id, pname, conquestDate, primaryColor, secondaryColor, population, naturalResources, humanSettlements, galaxy, solarSystem, spaceCoordinates, transmissionFrequency, communicationCode, ruler, title);
+            clearFields();
         } else {
             edit = false;
             setIsUpdate(false);
