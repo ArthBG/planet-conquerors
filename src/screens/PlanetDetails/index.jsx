@@ -52,7 +52,7 @@ export default function Planet({ route }) {
       </View>
     </View>
       ) : (
-        <Text style={styles.text}>Planeta não encontrado</Text>
+        <Text style={styles.textnotfound}>Planeta não encontrado</Text>
       )}
       </ScrollView>
     </View>

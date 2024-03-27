@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
         fontSize: 18,
         margin: 5
     },
+    textnotfound:{
+        color: "#fff",
+        fontSize: 18,
+        paddingLeft: 15,
+    },
+
     containerStuff:{
         marginTop: 50,
         marginBottom: 50,
