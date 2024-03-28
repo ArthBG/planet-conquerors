@@ -13,8 +13,8 @@ const Tab = createBottomTabNavigator();
 const TabRoutes = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false,
-    tabBarStyle: { backgroundColor: "#000540",
-    borderTopColor: "#000",
+    tabBarStyle: { backgroundColor: "#000326",
+    borderTopColor: "#000326",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
