@@ -9,7 +9,7 @@ export default function Profile() {
   return (
     <LinearGradient
       style={styles.container}
-      colors={['#000326', '#000439', '#00032F', '#00021E']}
+      colors={['#000326', '#000439', '#00032F', '#000326']}
       start={{ x: 1, y: 0 }}
       end={{ x: 1, y: 1 }}>
       <ScrollView style={styles.scrollViewContainer}>
