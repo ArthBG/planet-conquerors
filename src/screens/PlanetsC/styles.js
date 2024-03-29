@@ -1,6 +1,10 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+    background:{
+        width: '100%',
+        
+    },
     containerAllS: {
         flex: 1,
         justifyContent: "center",
