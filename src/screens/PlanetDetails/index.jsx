@@ -4,7 +4,7 @@ import Title from '../../components/Title'
 import PlanetList from '../../models/ListPlanets'
 import styles from './styles'
 import PlanetMaker from '../../components/PlanetMaker';
-import { Feather, MaterialCommunityIcons, Fontisto, FontAwesome } from '@expo/vector-icons';
+import { Feather, MaterialCommunityIcons, Fontisto, FontAwesome, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 export default function Planet({ route }) {
   const navigation = useNavigation();
   const { data } = route.params;
@@ -61,20 +61,44 @@ export default function Planet({ route }) {
       <MaterialCommunityIcons name="leaf" size={26} color='green' />
       <MaterialCommunityIcons name="snowflake" size={26} color='lightblue' />
       </View>
-      <Text style={styles.text}>{data.naturalResources}</Text>
+      <Text style={styles.textNatural}>{data.naturalResources}</Text>
       </View>
+      <View style={styles.resourcesContains}>
+      <Title title="Acomodamento de Humanos" />
       <Text style={styles.text}>{data.humanSettlements}</Text>
+      </View>
+      <View style={styles.localContainer}>
+      <View style={{alignItems: 'center', justifyContent: 'center', marginTop: 5}}>
+        <Ionicons name="location" size={30} color={data.primaryColor} />
+        </View>
+        <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.lola2}>
+      <Title title="Coordenadas Espaciais" size={18} />
       <Text style={styles.text}>{data.spaceCoordinates}</Text>
+      </View>
+      <View style={styles.lola2}>
+      <Title title="Frequência de Transmissão" size={18} />
       <Text style={styles.text}>{data.transmissionFrequency}</Text>
+      </View>
+      <View style={styles.lola2}>
+      <Title title="Código de Comunicação" size={18} />
       <Text style={styles.text}>{data.communicationCode}</Text>
-      <Text style={styles.text}>{data.ruler}</Text>
-      <Text style={styles.text}>{data.title}</Text>
+      </View>
+      </View>
+      </View>
+      <View style={styles.containerRuler}>
+       <Title title={`Governante do planeta ${data.name}`}  size={21} color={'#000'} /> 
+       <View style={styles.lola}>
+      <FontAwesome5 name="crown" size={30} color={'#F1B619'} />
+      <Text style={styles.textRuler}>{data.title} {data.ruler}</Text>
+      </View>
+      </View>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={{borderColor: data.primaryColor,  paddingVertical: 10,  paddingHorizontal: 20, borderRadius: 8, borderWidth: 2 }} onPress={editPlanet}>
-          <Text style={styles.buttonText}>Editar</Text>
+        <TouchableOpacity style={{backgroundColor: '#007BFF', borderColor: '#007BFF',borderColor: data.primaryColor,  paddingVertical: 10,  paddingHorizontal: 20, borderRadius: 8, borderWidth: 2 }} onPress={editPlanet}>
+          <Feather name="edit" size={20} color={data.primaryColor} />
         </TouchableOpacity>
         <TouchableOpacity style={{backgroundColor: '#FF0000', borderColor: '#dc3545', paddingVertical: 10, paddingHorizontal: 20, borderRadius: 8, borderWidth: 2, }} onPress={deletePlanet}>
-          <Text style={styles.buttonText}>Excluir</Text>
+          <FontAwesome name="trash" size={20} color="#fff" />
         </TouchableOpacity>
       </View>
     </View>

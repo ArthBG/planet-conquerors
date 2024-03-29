@@ -26,6 +26,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         margin: 5
     },
+    textNatural: {
+        color: "#fff",
+        fontSize: 14,
+        margin: 5,
+        fontWeight: 'bold'
+    },
+    textRuler:{ 
+      color: "#000",
+      fontSize: 18,
+      fontWeight: 'bold',
+
+    },
     textnotfound:{
         color: "#fff",
         fontSize: 18,
@@ -37,13 +49,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         gap: 5
     },
+    lola2:{
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     titleContainer:{
         backgroundColor: 'rgba(67, 93, 110, 0.25)',
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
         alignItems: 'center',
         textAlign: 'center',
-        width: '95%',
+        width: '100%',
         marginTop: 20
     },
     resourcesContainer:{
@@ -52,7 +69,7 @@ const styles = StyleSheet.create({
       flexWrap: 'wrap',
       borderBottomLeftRadius: 20,
       borderBottomRightRadius: 20,
-      width: '95%',
+      width: '100%',
       height: 80,
       justifyContent: 'center',
       alignItems: 'center',
@@ -62,9 +79,33 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 20,
     width: '95%',
-    height: 99,
+    height: 90,
+    minHeight: 'fit-content',
+    maxHeight: 'fit-content',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  localContainer:{
+    backgroundColor: "rgba(200, 199, 199, 0.15)",
+    marginTop: 10,
+    flexDirection: 'column',
+    borderRadius: 20,
+    width: '95%',
+    alignItems: 'center',
+  },
+  containerRuler:{
+    backgroundColor: '#fff',
+    marginTop: 20,
+    marginBottom: 10,
+    borderRadius: 20,
+    minWidth: '50%',
+    minHeight: 'fit-content',
+    maxHeight: 'fit-content',
+    maxWidth: '95%',
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+
   },
   definePositions2:{
     display: 'flex',
