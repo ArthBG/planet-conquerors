@@ -57,7 +57,7 @@ export default function Home() {
                     {planet.image ? (
                       <Image source={planet.image} style={styles.planetImage} />
                     ) : (
-                      <PlanetMaker primaryColor={planet.primaryColor} secondaryColor={planet.secondaryColor} />
+                      <PlanetMaker primaryColor={planet.primaryColor} secondaryColor={planet.secondaryColor} lockit={"no"}/>
                     )
                     }
                     <Text style={styles.planetName}>{planet.name}</Text>
