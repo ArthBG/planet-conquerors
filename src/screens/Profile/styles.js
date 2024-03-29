@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
     },
     textsa:{
         fontWeight: 'bold',
+        fontSize: 20,
+        color: '#0077B5',
     },
     image: {
         width: 200,
