@@ -299,12 +299,11 @@ export default function PlanetsC({ route }) {
                 value={naturalResources}
                 onChangeText={setNaturalresources}
             />
-            <Text style={styles.Text}>Número de Assentamentos Humanos</Text>
+            <Text style={styles.Text}>Assentamentos Humanos</Text>
             <TextInput
                 style={styles.input}
                 value={humanSettlements}
                 onChangeText={setHumansettlements}
-                keyboardType="numeric"
             />
             <Text style={styles.Text}>Galáxia</Text>
             <TextInput
